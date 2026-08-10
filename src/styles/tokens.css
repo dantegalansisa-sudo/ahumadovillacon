@@ -1,0 +1,75 @@
+:root {
+  /* Base — light editorial, never dark on content sections */
+  --cream: #faf6f0;
+  --cream-deep: #f2ebe1;
+  --paper: #ffffff;
+
+  /* Ink — muted is darkened from the original #8B8078, which failed AA
+     (3.2:1) against cream-deep at caption sizes. #736860 clears 4.5:1 on
+     paper, cream and cream-deep. */
+  --ink: #1c1815;
+  --ink-soft: #4a423c;
+  --ink-muted: #736860;
+
+  /* Accent — ember / smoked paprika.
+     --ember-light is the only variant legible on the dark footer. */
+  --ember: #b23a20;
+  --ember-deep: #8c2b15;
+  --ember-light: #e0704f;
+  --ember-rgb: 178, 58, 32;
+
+  /* Support */
+  --tan: #c9a87c;
+  --border: #e5dcd1;
+
+  /* Layout constants — NEXIX standard */
+  --section-pad: 120px;
+  --container: 1320px;
+  --container-pad: 64px;
+  --radius: 20px;
+  --radius-sm: 12px;
+
+  /* Type — the Fallback families carry metric overrides (see base.css) so the
+     webfont swap does not reflow the page. */
+  --font-display: 'Anton', 'Anton Fallback', 'Arial Narrow', sans-serif;
+  --font-body: 'Inter', 'Inter Fallback', system-ui, sans-serif;
+
+  --fs-hero: clamp(3rem, 8vw, 6.5rem);
+  --fs-h2: clamp(2.25rem, 4.5vw, 3.75rem);
+  --fs-h3: clamp(1.375rem, 2vw, 1.75rem);
+  --fs-body: 1.0625rem;
+  --fs-small: 0.875rem;
+  --fs-eyebrow: 0.75rem;
+
+  /* Chrome — measured header height at rest and once scrolled (the topbar
+     collapses). Drives the fixed-header spacer, anchor offsets and the sticky
+     filter bar, so these must match the real rendered heights. */
+  --header-h: 240px;
+  --header-h-compact: 184px;
+  --ease-premium: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-snappy: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --container-pad: 40px;
+    --section-pad: 96px;
+  }
+}
+
+@media (max-width: 1000px) {
+  :root {
+    /* Nav row is replaced by the burger menu below this width. */
+    --header-h: 184px;
+    --header-h-compact: 128px;
+  }
+}
+
+@media (max-width: 720px) {
+  :root {
+    --container-pad: 24px;
+    --section-pad: 72px;
+    --header-h: 164px;
+    --header-h-compact: 126px;
+  }
+}

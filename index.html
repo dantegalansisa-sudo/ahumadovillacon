@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es-DO">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#B23A20" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!--
+      Static fallback for scrapers that do not run JS (WhatsApp and Facebook
+      link previews read this, not the rendered app). data-rh marks them as
+      Helmet-owned, so react-helmet-async replaces them on mount instead of
+      leaving a second, conflicting set of tags on the category routes.
+    -->
+    <title>Ahumados Villacon | Embutidos al por mayor y detalle</title>
+    <meta
+      data-rh="true"
+      name="description"
+      content="Salamis, jamones, salchichas, longanizas y tocineta de las mejores marcas. Venta al por mayor y al detalle en el Mercado de Villa Consuelo, Santo Domingo. Sin pedido mínimo. Pide por WhatsApp."
+    />
+    <meta data-rh="true" property="og:type" content="website" />
+    <meta data-rh="true" property="og:site_name" content="Ahumados Villacon" />
+    <meta data-rh="true" property="og:locale" content="es_DO" />
+    <meta
+      data-rh="true"
+      property="og:title"
+      content="Ahumados Villacon | Embutidos al por mayor y detalle"
+    />
+    <meta
+      data-rh="true"
+      property="og:description"
+      content="Salamis, jamones, salchichas, longanizas y tocineta. Al por mayor y al detalle en el Mercado de Villa Consuelo, Santo Domingo. Sin pedido mínimo."
+    />
+    <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- The two latin woff2 files are preloaded so the real faces are ready at
+         first paint and the swap causes no reflow. If Google bumps the font
+         version these URLs simply miss and loading falls back to normal. -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      crossorigin
+      href="https://fonts.gstatic.com/s/anton/v27/1Ptgg87LROyAm3Kz-C8CSKlv.woff2"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      crossorigin
+      href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2"
+    />
+    <!-- Loaded without blocking first render; metric-matched fallbacks in
+         base.css keep the swap free of layout shift. -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap"
+      />
+    </noscript>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
