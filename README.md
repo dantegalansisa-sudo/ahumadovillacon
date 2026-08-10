@@ -86,6 +86,11 @@ muestra un bloque de marca diseñado; nunca una imagen rota ni una foto de stock
   en `src/styles/tokens.css`.
 - Las familias `Anton Fallback` e `Inter Fallback` en `src/styles/base.css` llevan métricas
   medidas contra las fuentes reales para que la carga de las webfonts no mueva el layout.
+- `vercel.json` reescribe hacia `/index.html` todo path sin extensión, para que React Router
+  maneje `/productos/:categoria` al entrar directo o al recargar. La condición excluye los
+  paths con punto para que `robots.txt` y `sitemap.xml` se sigan sirviendo tal cual.
+  El esquema de Vercel rechaza cualquier clave que no reconozca dentro de `rewrites`
+  (incluida una llamada `comment`), así que ese archivo no admite notas: van aquí.
 - El mapa usa el embed de Google Maps sin API key (`maps?q=...&output=embed`). Si algún día
   deja de resolver, se cambia por Maps Embed API con key en `business.ts`.
 - Los `<title>` y `<meta>` estáticos de `index.html` llevan `data-rh="true"` a propósito:

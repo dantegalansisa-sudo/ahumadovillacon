@@ -2,7 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
-      "comment": "Serve the SPA for every path without a file extension so React Router owns routing (needed for the Phase 2 category routes). Static files like /robots.txt and /sitemap.xml keep being served directly.",
       "source": "/((?!.*\\.).*)",
       "destination": "/index.html"
     }
