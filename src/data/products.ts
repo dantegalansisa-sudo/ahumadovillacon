@@ -387,6 +387,7 @@ export const PRODUCTS: Product[] = [
     category: 'salchichas',
     description: 'Salchicha hot dog superior, venta por unidad.',
     unit: 'unidad',
+    hasPhoto: true,
   },
   {
     slug: 'salchicha-chef',
@@ -395,6 +396,7 @@ export const PRODUCTS: Product[] = [
     category: 'salchichas',
     description: 'Salchicha marca Chef, por unidad.',
     unit: 'unidad',
+    hasPhoto: true,
   },
   {
     slug: 'salchicha-hot-dog',
@@ -411,6 +413,7 @@ export const PRODUCTS: Product[] = [
     category: 'salchichas',
     description: 'Salchicha hot dog marca Agrofem.',
     unit: 'unidad',
+    hasPhoto: true,
   },
   {
     slug: 'salchicha-piggy-links-premium-chef',
@@ -419,6 +422,7 @@ export const PRODUCTS: Product[] = [
     category: 'salchichas',
     description: 'Salchicha premium tipo links, por paquete.',
     unit: 'paquete',
+    hasPhoto: true,
   },
 
   // LONGANIZAS (3)
@@ -429,6 +433,7 @@ export const PRODUCTS: Product[] = [
     category: 'longanizas',
     description: 'Longaniza gruesa, por libra.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'longaniza-fina',
@@ -437,6 +442,7 @@ export const PRODUCTS: Product[] = [
     category: 'longanizas',
     description: 'Longaniza fina, por libra.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'longaniza-parrillera',
@@ -445,6 +451,7 @@ export const PRODUCTS: Product[] = [
     category: 'longanizas',
     description: 'Longaniza para parrilla, por libra.',
     unit: 'libra',
+    hasPhoto: true,
   },
 
   // ESPECIALIDADES (2)
@@ -455,6 +462,7 @@ export const PRODUCTS: Product[] = [
     category: 'especialidades',
     description: 'Tocineta en rebanadas, lista para cocinar.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'pepperoni',
@@ -463,6 +471,7 @@ export const PRODUCTS: Product[] = [
     category: 'especialidades',
     description: 'Pepperoni por libra, ideal para pizzería.',
     unit: 'libra',
+    hasPhoto: true,
   },
 ];
 

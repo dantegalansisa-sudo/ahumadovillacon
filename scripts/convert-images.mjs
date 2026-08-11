@@ -53,6 +53,23 @@ const MAP = {
   'SALAMIS/SALAMI NARANJAL LATINO.png': 'salami-naranjal-latino',
   'SALAMIS/SALAMI TIPO ARGENTINO.png': 'salami-tipo-argentino',
   'SALAMIS/SALAMI DE POLLO AGROFEM LIB.png': 'salami-de-pollo-agrofem',
+
+  'SALCHICHAS/SALCHICHA CHEF HOT DOG SUPERIOR.png': 'salchicha-chef-hot-dog-superior',
+  'SALCHICHAS/SALCHICHA CHEF.png': 'salchicha-chef',
+  'SALCHICHAS/SALCHICHA HOT DOG AGROFEN.png': 'salchicha-hot-dog-agrofem',
+  'SALCHICHAS/SALCHICHA PIGGY LINKS PREMIUN CHEFF.png':
+    'salchicha-piggy-links-premium-chef',
+  // 'SALCHICHA HOGT DOD.png' is byte-identical to 'SALCHICHA CHEF HOT DOG
+  // SUPERIOR.png', so salchicha-hot-dog is left without a photo rather than
+  // showing a picture that may belong to a different product.
+
+  'LONGANIZAS/LONGANIZA GRUESA.png': 'longaniza-gruesa',
+  'LONGANIZAS/LONGANIZA FINA.png': 'longaniza-fina',
+  'LONGANIZAS/LONGANIZA PARRILLERA LB.png': 'longaniza-parrillera',
+
+  // Delivered inside the LONGANIZAS folder, but they are especialidades.
+  'LONGANIZAS/TOCINETA REBANADA.png': 'tocineta-rebanada',
+  'LONGANIZAS/PEPERONI.png': 'pepperoni',
 };
 
 async function loadChromium() {

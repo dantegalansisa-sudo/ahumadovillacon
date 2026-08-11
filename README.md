@@ -80,8 +80,14 @@ de salami). Si el cliente da años en el mercado o clientes atendidos, se sustit
 
 ### 4. Fotos
 
-**Listas:** las 11 de jamones y jamonetas. **Faltan:** 23 productos (salamis, salchichas,
-longanizas, especialidades), el hero, el local, la tarjeta social y las 5 de categoría.
+**Listas:** 33 de los 34 productos.
+**Faltan:** `salchicha-hot-dog` (ver abajo), el hero, el local, la tarjeta social y las
+5 imágenes de categoría.
+
+> El archivo `SALCHICHA HOGT DOD.png` es byte a byte idéntico a
+> `SALCHICHA CHEF HOT DOG SUPERIOR.png`. Se asignó solo al segundo: mostrar la misma
+> foto en dos productos distintos confunde a quien pide. Si el cliente confirma que son
+> el mismo producto, basta con duplicar la entrada en el MAP del script.
 
 ```
 public/images/hero.jpg        2400x1400  fondo del hero
