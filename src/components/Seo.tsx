@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { BUSINESS, HOURS, LEGAL, isPending } from '../data/business';
-import { absoluteUrl } from '../utils/schema';
+import { absoluteUrl, ogImageUrl } from '../utils/schema';
 
 interface SeoProps {
   title: string;
@@ -20,7 +20,7 @@ export default function Seo({
   schemas = [],
 }: SeoProps) {
   const url = absoluteUrl(path);
-  const ogImage = absoluteUrl('/images/og-image.jpg');
+  const ogImage = ogImageUrl();
 
   const store: Record<string, unknown> = {
     '@context': 'https://schema.org',

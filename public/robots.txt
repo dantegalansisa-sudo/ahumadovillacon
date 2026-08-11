@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://{{DOMINIO}}/sitemap.xml
+Sitemap: https://www.ahumadosvillacon.com/sitemap.xml

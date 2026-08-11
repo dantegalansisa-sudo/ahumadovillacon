@@ -50,6 +50,7 @@ mayorista y al structured data.
 | Nombre comercial | Ahumados Villacon (registrado en ONAPI No. 924865) |
 | Titular | Franklin Starlin Olaverría Casado |
 | Ubicación | Mercado de Villa Consuelo, Santo Domingo, D.N. |
+| Dominio | https://www.ahumadosvillacon.com (el apex redirige a www) |
 | WhatsApp | (849) 352-9892 |
 | Horario | Lun a sáb 7:00 a.m. – 6:30 p.m. · Dom 7:00 a.m. – 5:00 p.m. |
 | Delivery | Sí, coordinado por WhatsApp |
@@ -62,11 +63,10 @@ mayorista y al structured data.
 
 ### 1. En `src/data/business.ts`
 
-`email` · `instagram` · `facebook` · `domain` siguen como `{{PENDIENTE}}`.
+`email` · `instagram` · `facebook` siguen como `{{PENDIENTE}}`. Al llenar
+`instagram` / `facebook` aparecen solos los iconos en el topbar y el footer.
 
-- Al llenar `instagram` / `facebook` aparecen solos los iconos en el topbar y el footer.
-- Al llenar `domain` se activan canonical, `og:url` y las URLs absolutas del JSON-LD.
-  También hay que reemplazar `{{DOMINIO}}` en `public/robots.txt` y `public/sitemap.xml`.
+El dominio ya está puesto: canonical, `og:url`, el JSON-LD y el BreadcrumbList están activos.
 
 ### 2. Número de puesto en el mercado
 
@@ -81,7 +81,9 @@ de salami). Si el cliente da años en el mercado o clientes atendidos, se sustit
 ### 4. Fotos
 
 **Listas:** los 34 productos y las 5 portadas de categoría.
-**Faltan:** el hero, el local y la tarjeta social.
+**Faltan:** el hero, el local y la tarjeta social (`og-image.jpg`). Cuando exista esta
+última hay que poner `HAS_OG_IMAGE = true` en `src/utils/schema.ts`: mientras sea false
+no se anuncia un `og:image` que daría 404 al compartir por WhatsApp.
 
 > `SALCHICHA HOGT DOD.png` es byte a byte idéntico a
 > `SALCHICHA CHEF HOT DOG SUPERIOR.png`. Por indicación del cliente se usa en los dos

@@ -84,7 +84,8 @@ const COVERS = {
   'SALAMIS/SALAMI TOLENTINO AHUMADO GRADO SUPERIOR.png': 'salamis',
   'PORTADA/JAMONES Y JAMONETAS PORTADA.png': 'jamones',
   'PORTADA/LONGANIZAS PORTADA.png': 'longanizas',
-  'PORTADA/SALCHICHA PORTADA.png': 'salchichas',
+  // 'SALCHICHA PORTADA.png' (234x132) was replaced by this larger one.
+  'PORTADA/salchicha portada 1.png': 'salchichas',
   'PORTADA/TOCINETA PORTADA.png': 'especialidades',
 };
 

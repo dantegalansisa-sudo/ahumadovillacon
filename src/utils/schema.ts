@@ -10,6 +10,17 @@ export function absoluteUrl(path: string): string | undefined {
   return hasDomain ? `${BUSINESS.siteUrl}${path}` : undefined;
 }
 
+/**
+ * Flip to true once /public/images/og-image.jpg (1200x630) exists. Announcing
+ * an og:image that 404s is worse than announcing none: WhatsApp and Facebook
+ * fetch it on every share and end up with no preview either way.
+ */
+export const HAS_OG_IMAGE = false;
+
+export function ogImageUrl(): string | undefined {
+  return HAS_OG_IMAGE ? absoluteUrl('/images/og-image.jpg') : undefined;
+}
+
 /** Answers still marked PENDING are skipped rather than invented. */
 export function faqSchema(): Record<string, unknown> | null {
   const answered = FAQ.filter((item) => !isPending(item.answer));

@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Replace {{DOMINIO}} with the live domain before submitting to Search Console.
+  Host: www. The apex domain 308-redirects to it, so every URL here uses www
+  to match the canonical tags the app emits.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://{{DOMINIO}}/</loc>
+    <loc>https://www.ahumadosvillacon.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://{{DOMINIO}}/productos/salamis</loc>
+    <loc>https://www.ahumadosvillacon.com/productos/salamis</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://{{DOMINIO}}/productos/jamones</loc>
+    <loc>https://www.ahumadosvillacon.com/productos/jamones</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://{{DOMINIO}}/productos/salchichas</loc>
+    <loc>https://www.ahumadosvillacon.com/productos/salchichas</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://{{DOMINIO}}/productos/longanizas</loc>
+    <loc>https://www.ahumadosvillacon.com/productos/longanizas</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://{{DOMINIO}}/productos/especialidades</loc>
+    <loc>https://www.ahumadosvillacon.com/productos/especialidades</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

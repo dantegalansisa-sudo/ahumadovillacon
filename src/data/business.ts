@@ -32,10 +32,10 @@ export const BUSINESS = {
   // endpoint ever stops resolving.
   mapEmbedUrl: `https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&output=embed`,
   mapLinkUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}`,
-  // Replace {{DOMINIO}} once the domain is registered. Also present in
-  // public/robots.txt and public/sitemap.xml.
-  domain: '{{DOMINIO}}',
-  siteUrl: 'https://{{DOMINIO}}',
+  // Vercel serves the site on www and 308-redirects the apex to it, so www is
+  // the canonical host. Mirrored in public/robots.txt and public/sitemap.xml.
+  domain: 'www.ahumadosvillacon.com',
+  siteUrl: 'https://www.ahumadosvillacon.com',
 } as const;
 
 /**
