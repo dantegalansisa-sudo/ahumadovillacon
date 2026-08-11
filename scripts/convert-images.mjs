@@ -75,12 +75,13 @@ const MAP = {
 /**
  * Category covers. These are cropped to 4:3 and land in /public/categories.
  *
- * Note on 'SALAMI PORTADA.png': the source carries a repeated "Envato
- * Elements" watermark, so it is a stock preview. Published at the client's
- * explicit instruction; replace it with the licensed version when available.
+ * Salamis does not use 'PORTADA/SALAMI PORTADA.png': that file carries a
+ * repeated "Envato Elements" watermark, so it is an unlicensed stock preview.
+ * The Tolentino shot is the client's own and works as a cover — the 4:3 crop
+ * also drops the promo text that ran across the top of the original.
  */
 const COVERS = {
-  'PORTADA/SALAMI PORTADA.png': 'salamis',
+  'SALAMIS/SALAMI TOLENTINO AHUMADO GRADO SUPERIOR.png': 'salamis',
   'PORTADA/JAMONES Y JAMONETAS PORTADA.png': 'jamones',
   'PORTADA/LONGANIZAS PORTADA.png': 'longanizas',
   'PORTADA/SALCHICHA PORTADA.png': 'salchichas',

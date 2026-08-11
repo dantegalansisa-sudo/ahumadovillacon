@@ -87,15 +87,16 @@ de salami). Si el cliente da años en el mercado o clientes atendidos, se sustit
 > `SALCHICHA CHEF HOT DOG SUPERIOR.png`. Por indicación del cliente se usa en los dos
 > productos, así que ambas fichas muestran la misma imagen.
 
-> `SALAMI PORTADA.png` trae la marca de agua de Envato Elements: es un preview de banco
-> de imágenes. Se publica por indicación expresa del cliente. Cuando exista la versión
-> con licencia, se reemplaza el archivo en /IMAGENES/PORTADA y se corre el script.
+> `PORTADA/SALAMI PORTADA.png` **no se usa**: trae la marca de agua de Envato Elements,
+> o sea es un preview de banco de imágenes sin licencia. La portada de salamis sale de
+> `SALAMIS/SALAMI TOLENTINO AHUMADO GRADO SUPERIOR.png`, que es foto del cliente; el
+> recorte a 4:3 además elimina el texto publicitario que traía encima.
 
 ```
 public/images/hero.jpg        2400x1400  fondo del hero
 public/images/local.jpg       1200x1500  el puesto, sección Nosotros
 public/images/og-image.jpg    1200x630   tarjeta para compartir
-public/categories/{salamis|jamones|salchichas|longanizas|especialidades}.jpg   1200x900
+public/categories/{id}.webp   4:3       generada por el script
 public/products/{slug}.webp   cuadrada   generada por el script, no a mano
 ```
 
