@@ -61,7 +61,8 @@ export interface CategoryMeta {
   label: string;
   chipLabel: string;
   blurb: string;
-  image: string;
+  /** 4:3 cover in /public/categories. Undefined while there is no usable one. */
+  image?: string;
   /** Phase 2 category route: /productos/{id} */
   h1: string;
   metaTitle: string;
@@ -81,7 +82,7 @@ export const CATEGORIES: CategoryMeta[] = [
     label: 'Salamis',
     chipLabel: 'Salamis',
     blurb: 'Supremo, super especial, fino y ahumado. Las marcas que ya pide tu cliente.',
-    image: '/categories/salamis.jpg',
+    // Sin portada: la imagen entregada trae marca de agua de Envato Elements.
     h1: 'Salami al por mayor en Santo Domingo',
     metaTitle: 'Salami al por mayor en Santo Domingo | Ahumados Villacon',
     metaDescription:
@@ -97,7 +98,7 @@ export const CATEGORIES: CategoryMeta[] = [
     label: 'Jamones y jamonetas',
     chipLabel: 'Jamones y jamonetas',
     blurb: 'Jamón picnic, cocido, de pavo y jamonetas para sándwich y picadera.',
-    image: '/categories/jamones.jpg',
+    image: '/categories/jamones.webp',
     h1: 'Jamón y jamoneta al por mayor en Santo Domingo',
     metaTitle: 'Jamón y jamoneta al por mayor | Ahumados Villacon',
     metaDescription:
@@ -113,7 +114,7 @@ export const CATEGORIES: CategoryMeta[] = [
     label: 'Salchichas',
     chipLabel: 'Salchichas',
     blurb: 'Hot dog superior, premium y de consumo diario, por unidad o por paquete.',
-    image: '/categories/salchichas.jpg',
+    image: '/categories/salchichas.webp',
     h1: 'Salchichas al por mayor en Santo Domingo',
     metaTitle: 'Salchichas al por mayor en Santo Domingo | Villacon',
     metaDescription:
@@ -129,7 +130,7 @@ export const CATEGORIES: CategoryMeta[] = [
     label: 'Longanizas',
     chipLabel: 'Longanizas',
     blurb: 'Gruesa, fina y parrillera. Venta por libra.',
-    image: '/categories/longanizas.jpg',
+    image: '/categories/longanizas.webp',
     h1: 'Longaniza dominicana al por mayor',
     metaTitle: 'Longaniza dominicana al por mayor | Ahumados Villacon',
     metaDescription:
@@ -145,7 +146,7 @@ export const CATEGORIES: CategoryMeta[] = [
     label: 'Especialidades',
     chipLabel: 'Especialidades',
     blurb: 'Tocineta rebanada y pepperoni para pizzería y desayuno.',
-    image: '/categories/especialidades.jpg',
+    image: '/categories/especialidades.webp',
     h1: 'Tocineta y pepperoni al por mayor',
     metaTitle: 'Tocineta y pepperoni al por mayor | Ahumados Villacon',
     metaDescription:
@@ -405,6 +406,7 @@ export const PRODUCTS: Product[] = [
     category: 'salchichas',
     description: 'Salchicha hot dog clásica.',
     unit: 'unidad',
+    hasPhoto: true,
   },
   {
     slug: 'salchicha-hot-dog-agrofem',

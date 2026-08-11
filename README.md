@@ -80,14 +80,17 @@ de salami). Si el cliente da años en el mercado o clientes atendidos, se sustit
 
 ### 4. Fotos
 
-**Listas:** 33 de los 34 productos.
-**Faltan:** `salchicha-hot-dog` (ver abajo), el hero, el local, la tarjeta social y las
-5 imágenes de categoría.
+**Listas:** los 34 productos y 4 de las 5 portadas de categoría.
+**Faltan:** la portada de salamis (ver abajo), el hero, el local y la tarjeta social.
 
-> El archivo `SALCHICHA HOGT DOD.png` es byte a byte idéntico a
-> `SALCHICHA CHEF HOT DOG SUPERIOR.png`. Se asignó solo al segundo: mostrar la misma
-> foto en dos productos distintos confunde a quien pide. Si el cliente confirma que son
-> el mismo producto, basta con duplicar la entrada en el MAP del script.
+> `SALCHICHA HOGT DOD.png` es byte a byte idéntico a
+> `SALCHICHA CHEF HOT DOG SUPERIOR.png`. Por indicación del cliente se usa en los dos
+> productos, así que ambas fichas muestran la misma imagen.
+
+> **La portada de salamis no se publica.** `SALAMI PORTADA.png` trae la marca de agua
+> de Envato Elements repetida: es un preview de banco de imágenes sin licencia. La
+> tarjeta de salamis mantiene el placeholder hasta que llegue una imagen limpia.
+> `CategoryMeta.image` es opcional justamente para esto.
 
 ```
 public/images/hero.jpg        2400x1400  fondo del hero

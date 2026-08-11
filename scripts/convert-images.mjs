@@ -59,9 +59,9 @@ const MAP = {
   'SALCHICHAS/SALCHICHA HOT DOG AGROFEN.png': 'salchicha-hot-dog-agrofem',
   'SALCHICHAS/SALCHICHA PIGGY LINKS PREMIUN CHEFF.png':
     'salchicha-piggy-links-premium-chef',
-  // 'SALCHICHA HOGT DOD.png' is byte-identical to 'SALCHICHA CHEF HOT DOG
-  // SUPERIOR.png', so salchicha-hot-dog is left without a photo rather than
-  // showing a picture that may belong to a different product.
+  // Byte-identical to 'SALCHICHA CHEF HOT DOG SUPERIOR.png'. The client asked
+  // for it to be used anyway, so both products show the same picture.
+  'SALCHICHAS/SALCHICHA HOGT DOD.png': 'salchicha-hot-dog',
 
   'LONGANIZAS/LONGANIZA GRUESA.png': 'longaniza-gruesa',
   'LONGANIZAS/LONGANIZA FINA.png': 'longaniza-fina',
@@ -71,6 +71,25 @@ const MAP = {
   'LONGANIZAS/TOCINETA REBANADA.png': 'tocineta-rebanada',
   'LONGANIZAS/PEPERONI.png': 'pepperoni',
 };
+
+/**
+ * Category covers. These are cropped to 4:3 and land in /public/categories.
+ *
+ * 'SALAMI PORTADA.png' is deliberately absent: it carries a repeated "Envato
+ * Elements" watermark, so it is an unlicensed stock preview and must not be
+ * published. The salamis card keeps its placeholder until a clean image
+ * arrives.
+ */
+const COVERS = {
+  'PORTADA/JAMONES Y JAMONETAS PORTADA.png': 'jamones',
+  'PORTADA/LONGANIZAS PORTADA.png': 'longanizas',
+  'PORTADA/SALCHICHA PORTADA.png': 'salchichas',
+  'PORTADA/TOCINETA PORTADA.png': 'especialidades',
+};
+
+const COVER_DIR = path.join(ROOT, 'public', 'categories');
+const COVER_MAX_WIDTH = 1200;
+const COVER_RATIO = 4 / 3;
 
 async function loadChromium() {
   try {
@@ -152,6 +171,59 @@ for (const [file, slug] of Object.entries(MAP)) {
   const buffer = Buffer.from(result.dataUrl.split(',')[1], 'base64');
   writeFileSync(path.join(OUT_DIR, `${slug}.webp`), buffer);
   console.log(`${slug.padEnd(34)} ${result.side}²  ${Math.round(buffer.length / 1024)} KB`);
+}
+
+if (!existsSync(COVER_DIR)) mkdirSync(COVER_DIR, { recursive: true });
+
+for (const [file, id] of Object.entries(COVERS)) {
+  if (!existsSync(path.join(SRC_DIR, file))) {
+    console.log(`falta la portada: ${file}`);
+    continue;
+  }
+
+  const result = await page.evaluate(
+    async ({ url, maxWidth, ratio, quality }) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.src = url;
+      await img.decode();
+
+      // Largest 4:3 box that fits inside the source, centred (a cover crop).
+      const cropW = Math.min(img.naturalWidth, img.naturalHeight * ratio);
+      const cropH = cropW / ratio;
+      const sx = (img.naturalWidth - cropW) / 2;
+      const sy = (img.naturalHeight - cropH) / 2;
+
+      const outW = Math.round(Math.min(maxWidth, cropW));
+      const outH = Math.round(outW / ratio);
+
+      const canvas = document.createElement('canvas');
+      canvas.width = outW;
+      canvas.height = outH;
+      const ctx = canvas.getContext('2d');
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(img, sx, sy, cropW, cropH, 0, 0, outW, outH);
+
+      return {
+        dataUrl: canvas.toDataURL('image/webp', quality),
+        outW,
+        outH,
+        sourceW: img.naturalWidth,
+      };
+    },
+    {
+      url: `http://localhost:${PORT}/${file.split('/').map(encodeURIComponent).join('/')}`,
+      maxWidth: COVER_MAX_WIDTH,
+      ratio: COVER_RATIO,
+      quality: QUALITY,
+    },
+  );
+
+  const buffer = Buffer.from(result.dataUrl.split(',')[1], 'base64');
+  writeFileSync(path.join(COVER_DIR, `${id}.webp`), buffer);
+  console.log(
+    `portada ${id.padEnd(24)} ${result.outW}x${result.outH}  ${Math.round(buffer.length / 1024)} KB`,
+  );
 }
 
 await browser.close();
