@@ -16,12 +16,33 @@ export type Category =
   | 'longanizas'
   | 'especialidades';
 
+/** How the product is sold. Drives the quantity wording in the order list. */
+export type Unit = 'libra' | 'unidad' | 'paquete';
+
 export interface Product {
   slug: string;
   name: string;
   ref: string;
   category: Category;
   description: string;
+  unit: Unit;
+  /**
+   * Price per unit in DOP. Left undefined until the client supplies real
+   * figures — nothing is ever guessed. Fill it in and the price shows on the
+   * card and in the WhatsApp order automatically.
+   */
+  price?: number;
+}
+
+export const UNIT_LABEL: Record<Unit, { one: string; many: string }> = {
+  libra: { one: 'libra', many: 'libras' },
+  unidad: { one: 'unidad', many: 'unidades' },
+  paquete: { one: 'paquete', many: 'paquetes' },
+};
+
+export function formatQty(qty: number, unit: Unit): string {
+  const label = UNIT_LABEL[unit];
+  return `${qty} ${qty === 1 ? label.one : label.many}`;
 }
 
 export interface CategoryMeta {
@@ -134,6 +155,7 @@ export const PRODUCTS: Product[] = [
     ref: 'SALAMI INDUVECA SUPREMO',
     category: 'salamis',
     description: 'Salami de cerdo, calidad supremo. Venta por libra.',
+    unit: 'libra',
   },
   {
     slug: 'salami-induveca-super-especial',
@@ -141,6 +163,7 @@ export const PRODUCTS: Product[] = [
     ref: 'SALAMI INDUVECA SUPER ESPECIAL',
     category: 'salamis',
     description: 'Corte clásico dominicano, ideal para desayuno y sándwich.',
+    unit: 'libra',
   },
   {
     slug: 'salami-chef-super-especial',
@@ -148,6 +171,7 @@ export const PRODUCTS: Product[] = [
     ref: 'SALAMI CHEF SUPER ESPECIAL',
     category: 'salamis',
     description: 'Salami super especial, presentación por libra.',
+    unit: 'libra',
   },
   {
     slug: 'salami-del-cerro-negro',
@@ -155,6 +179,7 @@ export const PRODUCTS: Product[] = [
     ref: 'SALAMI DEL CERRO NEGRO',
     category: 'salamis',
     description: 'Salami de cerdo, marca El Cerro. Por libra.',
+    unit: 'libra',
   },
   {
     slug: 'salami-estelar',
@@ -162,6 +187,7 @@ export const PRODUCTS: Product[] = [
     ref: 'SALAMI ESTELAR',
     category: 'salamis',
     description: 'Salami de consumo diario, rendidor.',
+    unit: 'libra',
   },
   {
     slug: 'salami-don-cibao-fino',
@@ -169,6 +195,7 @@ export const PRODUCTS: Product[] = [
     ref: 'SALAMI DON CIBAO FINO',
     category: 'salamis',
     description: 'Corte fino, textura suave.',
+    unit: 'libra',
   },
   {
     slug: 'salami-prado-campo-especial',
@@ -176,6 +203,7 @@ export const PRODUCTS: Product[] = [
     ref: 'SALAMI PRADO CAMPO ESPECIAL',
     category: 'salamis',
     description: 'Salami especial de la línea Prado Campo.',
+    unit: 'libra',
   },
   {
     slug: 'salami-prado-campo-fino',
@@ -183,6 +211,7 @@ export const PRODUCTS: Product[] = [
     ref: 'SALAMI PRADO CAMPO FINO',
     category: 'salamis',
     description: 'Corte fino, marca Prado Campo.',
+    unit: 'libra',
   },
   {
     slug: 'salami-el-mocano-super-especial',
@@ -190,6 +219,7 @@ export const PRODUCTS: Product[] = [
     ref: 'SALAMI EL MOCANO SUPER ESPECIAL',
     category: 'salamis',
     description: 'Salami super especial, venta por libra.',
+    unit: 'libra',
   },
   {
     slug: 'salami-tolentino-ahumado',
@@ -197,6 +227,7 @@ export const PRODUCTS: Product[] = [
     ref: 'SALAMI TOLENTINO AHUMADO GRADO SUPERIOR',
     category: 'salamis',
     description: 'Salami ahumado grado superior.',
+    unit: 'libra',
   },
   {
     slug: 'salami-naranjal-latino',
@@ -204,6 +235,7 @@ export const PRODUCTS: Product[] = [
     ref: 'SALAMI NARANJAL LATINO',
     category: 'salamis',
     description: 'Salami de la línea Naranjal Latino.',
+    unit: 'libra',
   },
   {
     slug: 'salami-tipo-argentino',
@@ -211,6 +243,7 @@ export const PRODUCTS: Product[] = [
     ref: 'SALAMI TIPO ARGENTINO',
     category: 'salamis',
     description: 'Salami curado tipo argentino, sabor intenso.',
+    unit: 'libra',
   },
   {
     slug: 'salami-de-pollo-agrofem',
@@ -218,6 +251,7 @@ export const PRODUCTS: Product[] = [
     ref: 'SALAMI DE POLLO AGROFEM',
     category: 'salamis',
     description: 'Salami de pollo, alternativa más liviana. Por libra.',
+    unit: 'libra',
   },
 
   // JAMONES Y JAMONETAS (11)
@@ -227,6 +261,7 @@ export const PRODUCTS: Product[] = [
     ref: 'JAMON PICNIC DEL CERRO',
     category: 'jamones',
     description: 'Jamón picnic, marca El Cerro. Por libra.',
+    unit: 'libra',
   },
   {
     slug: 'jamon-picnic-del-cerro-economico',
@@ -234,6 +269,7 @@ export const PRODUCTS: Product[] = [
     ref: 'JAMON PICNIC DEL CERRO ECONOMICO',
     category: 'jamones',
     description: 'Presentación económica del jamón picnic.',
+    unit: 'libra',
   },
   {
     slug: 'jamon-picnic-cocido',
@@ -241,6 +277,7 @@ export const PRODUCTS: Product[] = [
     ref: 'JAMON PICNIC COCIDO',
     category: 'jamones',
     description: 'Jamón picnic cocido, listo para servir.',
+    unit: 'libra',
   },
   {
     slug: 'jamon-cocido-corriente',
@@ -248,6 +285,7 @@ export const PRODUCTS: Product[] = [
     ref: 'JAMON COCIDO CORRIENTE',
     category: 'jamones',
     description: 'Jamón cocido de uso diario, rendidor.',
+    unit: 'libra',
   },
   {
     slug: 'jamon-caserio',
@@ -255,6 +293,7 @@ export const PRODUCTS: Product[] = [
     ref: 'JAMON CASERIO',
     category: 'jamones',
     description: 'Jamón marca Caserío, venta por libra.',
+    unit: 'libra',
   },
   {
     slug: 'jamon-de-pavo-checo',
@@ -262,6 +301,7 @@ export const PRODUCTS: Product[] = [
     ref: 'JAMON DE PAVO CHECO',
     category: 'jamones',
     description: 'Jamón de pavo, opción más liviana.',
+    unit: 'libra',
   },
   {
     slug: 'jamoneta',
@@ -269,6 +309,7 @@ export const PRODUCTS: Product[] = [
     ref: 'JAMONETA',
     category: 'jamones',
     description: 'Jamoneta clásica, por libra.',
+    unit: 'libra',
   },
   {
     slug: 'jamoneta-la-criolla',
@@ -276,6 +317,7 @@ export const PRODUCTS: Product[] = [
     ref: 'JAMONETA LA CRIOLLA',
     category: 'jamones',
     description: 'Jamoneta marca La Criolla.',
+    unit: 'libra',
   },
   {
     slug: 'jamoneta-de-pollo-ducarnes',
@@ -283,6 +325,7 @@ export const PRODUCTS: Product[] = [
     ref: 'JAMONETA DE POLLO DUCARNES',
     category: 'jamones',
     description: 'Jamoneta de pollo, marca Ducarnes.',
+    unit: 'libra',
   },
   {
     slug: 'jamoneta-moyeta',
@@ -290,6 +333,7 @@ export const PRODUCTS: Product[] = [
     ref: 'JAMONETA MOYETA',
     category: 'jamones',
     description: 'Jamoneta marca La Moyeta.',
+    unit: 'libra',
   },
   {
     slug: 'jamoneta-mortadela-la-moyeta',
@@ -297,6 +341,7 @@ export const PRODUCTS: Product[] = [
     ref: 'JAMONETA MORTADELA LA MOYETA',
     category: 'jamones',
     description: 'Mortadela de la línea La Moyeta.',
+    unit: 'libra',
   },
 
   // SALCHICHAS (5)
@@ -306,6 +351,7 @@ export const PRODUCTS: Product[] = [
     ref: 'SALCHICHA CHEF HOT DOG SUPERIOR',
     category: 'salchichas',
     description: 'Salchicha hot dog superior, venta por unidad.',
+    unit: 'unidad',
   },
   {
     slug: 'salchicha-chef',
@@ -313,6 +359,7 @@ export const PRODUCTS: Product[] = [
     ref: 'SALCHICHA CHEF',
     category: 'salchichas',
     description: 'Salchicha marca Chef, por unidad.',
+    unit: 'unidad',
   },
   {
     slug: 'salchicha-hot-dog',
@@ -320,6 +367,7 @@ export const PRODUCTS: Product[] = [
     ref: 'SALCHICHA HOT DOG',
     category: 'salchichas',
     description: 'Salchicha hot dog clásica.',
+    unit: 'unidad',
   },
   {
     slug: 'salchicha-hot-dog-agrofem',
@@ -327,6 +375,7 @@ export const PRODUCTS: Product[] = [
     ref: 'SALCHICHA HOT DOG AGROFEM',
     category: 'salchichas',
     description: 'Salchicha hot dog marca Agrofem.',
+    unit: 'unidad',
   },
   {
     slug: 'salchicha-piggy-links-premium-chef',
@@ -334,6 +383,7 @@ export const PRODUCTS: Product[] = [
     ref: 'SALCHICHA PIGGY LINKS PREMIUM CHEF',
     category: 'salchichas',
     description: 'Salchicha premium tipo links, por paquete.',
+    unit: 'paquete',
   },
 
   // LONGANIZAS (3)
@@ -343,6 +393,7 @@ export const PRODUCTS: Product[] = [
     ref: 'LONGANIZA GRUESA',
     category: 'longanizas',
     description: 'Longaniza gruesa, por libra.',
+    unit: 'libra',
   },
   {
     slug: 'longaniza-fina',
@@ -350,6 +401,7 @@ export const PRODUCTS: Product[] = [
     ref: 'LONGANIZA FINA',
     category: 'longanizas',
     description: 'Longaniza fina, por libra.',
+    unit: 'libra',
   },
   {
     slug: 'longaniza-parrillera',
@@ -357,6 +409,7 @@ export const PRODUCTS: Product[] = [
     ref: 'LONGANIZA PARRILLERA',
     category: 'longanizas',
     description: 'Longaniza para parrilla, por libra.',
+    unit: 'libra',
   },
 
   // ESPECIALIDADES (2)
@@ -366,6 +419,7 @@ export const PRODUCTS: Product[] = [
     ref: 'TOCINETA REBANADA',
     category: 'especialidades',
     description: 'Tocineta en rebanadas, lista para cocinar.',
+    unit: 'libra',
   },
   {
     slug: 'pepperoni',
@@ -373,6 +427,7 @@ export const PRODUCTS: Product[] = [
     ref: 'PEPPERONI',
     category: 'especialidades',
     description: 'Pepperoni por libra, ideal para pizzería.',
+    unit: 'libra',
   },
 ];
 

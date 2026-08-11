@@ -1,9 +1,16 @@
 import { motion } from 'framer-motion';
 import { WA_GENERAL } from '../utils/whatsapp';
+import { useOrderList } from '../hooks/useOrderList';
 import { IconWhatsApp } from './Icons';
 
 /** Non-negotiable NEXIX element: always-visible WhatsApp entry point. */
 export default function WhatsAppFab() {
+  const { count } = useOrderList();
+
+  // The order bar takes over the same corner and carries its own WhatsApp CTA,
+  // so two floating green buttons never stack.
+  if (count > 0) return null;
+
   return (
     <motion.a
       className="fab"

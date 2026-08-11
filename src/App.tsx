@@ -3,6 +3,8 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import CategoryPage from './pages/CategoryPage';
 import NotFound from './pages/NotFound';
+import OrderListBar from './components/OrderListBar';
+import { OrderListProvider } from './hooks/useOrderList';
 
 /**
  * React Router keeps the scroll position across navigations. Route changes go
@@ -31,13 +33,15 @@ function ScrollManager() {
 
 export default function App() {
   return (
-    <>
+    <OrderListProvider>
       <ScrollManager />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/productos/:categoria" element={<CategoryPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
+      {/* Outside Routes so the list survives navigation between pages. */}
+      <OrderListBar />
+    </OrderListProvider>
   );
 }

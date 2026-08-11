@@ -20,6 +20,26 @@ npm run build    # tsc -b && vite build  →  dist/
 npm run preview
 ```
 
+## Lista de pedido
+
+Es el "carrito" del sitio, sin precios ni checkout: el cliente agrega productos con
+cantidad y envía **un solo mensaje** de WhatsApp con todo. Vive en
+`src/hooks/useOrderList.tsx` (estado + `localStorage`) y `src/components/OrderListBar.tsx`
+(barra fija + panel). Sobrevive recargas y cambios de ruta.
+
+Cada producto tiene un campo `unit` (`libra`, `unidad` o `paquete`) que define cómo se
+cuenta y cómo se escribe en el mensaje.
+
+> **Por confirmar con el cliente:** la unidad está tomada de la descripción del propio
+> producto cuando la dice (5 de 34). En los otros 29 se asumió `libra` por categoría.
+> Si algún producto se vende por unidad o paquete, se corrige en `products.ts`.
+
+### Precios
+
+`Product.price` ya existe y está vacío a propósito — no se inventó ninguno. Al poner un
+número (DOP, por unidad de venta) aparece solo en la ficha, en el panel de la lista y en
+el mensaje de WhatsApp. No hay que tocar componentes.
+
 ## Datos del negocio
 
 Todo vive en `src/data/business.ts` y se propaga solo al header, footer, Visítanos,

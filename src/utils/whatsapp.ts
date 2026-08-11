@@ -1,14 +1,31 @@
 import { BUSINESS } from '../data/business';
+import { formatQty } from '../data/products';
+import type { OrderItem } from '../hooks/useOrderList';
 
 /** Base WhatsApp deep link with an arbitrary pre-filled message. */
 export function waLinkWithMessage(message: string): string {
   return `https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(message)}`;
 }
 
-/** Product enquiry — used by every card in the catalog. */
-export function waLink(productName: string): string {
+/**
+ * The whole order list as a single message. Prices are only written when a
+ * product actually has one, so the message stays honest while the catalog has
+ * none.
+ */
+export function waOrderLink(items: OrderItem[]): string {
+  const lines = items.map((item) => {
+    const qty = formatQty(item.qty, item.product.unit);
+    const price =
+      item.product.price === undefined
+        ? ''
+        : ` (RD$${item.product.price.toLocaleString('es-DO')} c/u)`;
+    return `- ${item.product.name}: ${qty}${price}`;
+  });
+
   return waLinkWithMessage(
-    `Hola ${BUSINESS.name}, me interesa: ${productName}. ¿Me pueden dar precio y disponibilidad?`,
+    `Hola ${BUSINESS.name}, quiero hacer este pedido:\n\n${lines.join(
+      '\n',
+    )}\n\n¿Me confirman precio y disponibilidad?`,
   );
 }
 

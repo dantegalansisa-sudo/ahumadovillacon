@@ -145,6 +145,33 @@ export function IconPlus(props: IconProps) {
   );
 }
 
+export function IconMinus(props: IconProps) {
+  return (
+    <Line {...props}>
+      <path d="M5 12h14" />
+    </Line>
+  );
+}
+
+export function IconBag(props: IconProps) {
+  return (
+    <Line {...props}>
+      <path d="M4.5 8h15l-1.2 12H5.7Z" />
+      <path d="M8.5 8V6.5a3.5 3.5 0 0 1 7 0V8" />
+    </Line>
+  );
+}
+
+export function IconTrash(props: IconProps) {
+  return (
+    <Line {...props}>
+      <path d="M4 7h16" />
+      <path d="M9.5 7V5.5h5V7" />
+      <path d="M6.5 7l1 13h9l1-13" />
+    </Line>
+  );
+}
+
 export function IconInstagram(props: IconProps) {
   return (
     <Line {...props}>
