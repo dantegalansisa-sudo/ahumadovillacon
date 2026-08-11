@@ -1,4 +1,9 @@
-import { CATEGORY_LABEL, UNIT_LABEL, type Product } from '../data/products';
+import {
+  CATEGORY_LABEL,
+  UNIT_LABEL,
+  photoSrc,
+  type Product,
+} from '../data/products';
 import { useOrderList } from '../hooks/useOrderList';
 import ProductImage from './ProductImage';
 import { IconMinus, IconPlus } from './Icons';
@@ -19,11 +24,12 @@ export default function ProductCard({ product, eager = false }: ProductCardProps
       <div className="product-card__media">
         <ProductImage
           className="product-card__img"
-          src={`/products/${product.slug}.jpg`}
+          src={photoSrc(product)}
           alt={product.name}
           width={1200}
           height={1200}
           eager={eager}
+          tone="paper"
         />
       </div>
 

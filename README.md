@@ -80,18 +80,30 @@ de salami). Si el cliente da años en el mercado o clientes atendidos, se sustit
 
 ### 4. Fotos
 
-Van en `public/`, con estos nombres exactos:
+**Listas:** las 11 de jamones y jamonetas. **Faltan:** 23 productos (salamis, salchichas,
+longanizas, especialidades), el hero, el local, la tarjeta social y las 5 de categoría.
 
 ```
 public/images/hero.jpg        2400x1400  fondo del hero
 public/images/local.jpg       1200x1500  el puesto, sección Nosotros
 public/images/og-image.jpg    1200x630   tarjeta para compartir
 public/categories/{salamis|jamones|salchichas|longanizas|especialidades}.jpg   1200x900
-public/products/{slug}.jpg    1200x1200  un archivo por producto
+public/products/{slug}.webp   cuadrada   generada por el script, no a mano
 ```
 
-Los `slug` exactos están en `src/data/products.ts`. Mientras una foto no exista se
-muestra un bloque de marca diseñado; nunca una imagen rota ni una foto de stock.
+Mientras una foto no exista se muestra un bloque de marca diseñado; nunca una imagen
+rota ni una foto de stock.
+
+**Flujo para agregar fotos nuevas:**
+
+1. Deja los originales en `/IMAGENES` (cualquier formato y tamaño).
+2. Agrega el par `'ARCHIVO.png': 'slug-del-producto'` en `scripts/convert-images.mjs`.
+3. `node scripts/convert-images.mjs` — recorta a cuadrado, no agranda las pequeñas y
+   exporta WebP a `public/products/`.
+4. Pon `hasPhoto: true` en esos productos en `src/data/products.ts`.
+
+El paso 4 es lo que evita que el navegador pida archivos que no existen. Los originales
+se quedan versionados para poder regenerar a otro tamaño cuando haga falta.
 
 ## Notas de implementación
 

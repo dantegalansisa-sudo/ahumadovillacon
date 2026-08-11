@@ -1,21 +1,22 @@
 import { useState } from 'react';
 
 interface ProductImageProps {
-  src: string;
+  /** Undefined while the photo does not exist yet — renders the placeholder
+   *  straight away instead of firing a request that 404s. */
+  src?: string;
   alt: string;
   width: number;
   height: number;
   className?: string;
   /** First-row images skip lazy loading. */
   eager?: boolean;
-  /** Fallback background: product cards sit on cream, category cards on deep. */
-  tone?: 'cream' | 'deep';
+  /** Fallback background, matched to whatever the image sits on. */
+  tone?: 'cream' | 'deep' | 'paper';
 }
 
 /**
- * Photos land later in /public. Until then the fallback is a designed block —
- * the wordmark diamond on a flat panel. No broken-image icon, no placeholder
- * service URL, no stock photo.
+ * Missing photos fall back to a designed block — the wordmark diamond on a
+ * flat panel. No broken-image icon, no placeholder service URL, no stock photo.
  */
 export default function ProductImage({
   src,
@@ -28,7 +29,7 @@ export default function ProductImage({
 }: ProductImageProps) {
   const [failed, setFailed] = useState(false);
 
-  if (failed) {
+  if (!src || failed) {
     return (
       <div
         className={`img-fallback img-fallback--${tone} ${className}`.trim()}

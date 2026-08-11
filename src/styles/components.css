@@ -732,10 +732,13 @@
   border-color: var(--tan);
 }
 
+/* White, not cream: the client's photos are cutouts on white, and a cream
+   panel would frame each one with a visible white square. */
 .product-card__media {
   aspect-ratio: 1 / 1;
-  padding: 24px;
-  background: var(--cream);
+  padding: 18px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
   overflow: hidden;
   display: grid;
   place-items: center;
@@ -806,6 +809,10 @@
 
 .img-fallback--deep {
   background: var(--cream-deep);
+}
+
+.img-fallback--paper {
+  background: var(--paper);
 }
 
 .img-fallback__diamond {

@@ -2,8 +2,8 @@
  * Product catalog. Source: the client's physical inventory sheet.
  * `name` is the cleaned display name, `ref` keeps the original inventory
  * string so the client can match items internally.
- * Photos resolve to /products/{slug}.jpg — missing files fall back silently
- * through the ProductImage component.
+ * Photos live at /products/{slug}.webp and are opt-in through `hasPhoto`;
+ * products without one render the designed placeholder.
  *
  * Descriptions are provisional: product type only, no origin, quality grade,
  * nutrition or marketing claims. Do not expand them without client sign-off.
@@ -32,6 +32,17 @@ export interface Product {
    * card and in the WhatsApp order automatically.
    */
   price?: number;
+  /**
+   * True when /public/products/{slug}.webp exists. Set it when the photo is
+   * added; without it the card renders the designed placeholder instead of
+   * firing a request that 404s.
+   */
+  hasPhoto?: true;
+}
+
+/** Public path of a product photo, or undefined while there is none. */
+export function photoSrc(product: Product): string | undefined {
+  return product.hasPhoto ? `/products/${product.slug}.webp` : undefined;
 }
 
 export const UNIT_LABEL: Record<Unit, { one: string; many: string }> = {
@@ -156,6 +167,7 @@ export const PRODUCTS: Product[] = [
     category: 'salamis',
     description: 'Salami de cerdo, calidad supremo. Venta por libra.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'salami-induveca-super-especial',
@@ -164,6 +176,7 @@ export const PRODUCTS: Product[] = [
     category: 'salamis',
     description: 'Corte clásico dominicano, ideal para desayuno y sándwich.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'salami-chef-super-especial',
@@ -172,6 +185,7 @@ export const PRODUCTS: Product[] = [
     category: 'salamis',
     description: 'Salami super especial, presentación por libra.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'salami-del-cerro-negro',
@@ -180,6 +194,7 @@ export const PRODUCTS: Product[] = [
     category: 'salamis',
     description: 'Salami de cerdo, marca El Cerro. Por libra.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'salami-estelar',
@@ -188,6 +203,7 @@ export const PRODUCTS: Product[] = [
     category: 'salamis',
     description: 'Salami de consumo diario, rendidor.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'salami-don-cibao-fino',
@@ -196,6 +212,7 @@ export const PRODUCTS: Product[] = [
     category: 'salamis',
     description: 'Corte fino, textura suave.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'salami-prado-campo-especial',
@@ -204,6 +221,7 @@ export const PRODUCTS: Product[] = [
     category: 'salamis',
     description: 'Salami especial de la línea Prado Campo.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'salami-prado-campo-fino',
@@ -212,6 +230,7 @@ export const PRODUCTS: Product[] = [
     category: 'salamis',
     description: 'Corte fino, marca Prado Campo.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'salami-el-mocano-super-especial',
@@ -220,6 +239,7 @@ export const PRODUCTS: Product[] = [
     category: 'salamis',
     description: 'Salami super especial, venta por libra.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'salami-tolentino-ahumado',
@@ -228,6 +248,7 @@ export const PRODUCTS: Product[] = [
     category: 'salamis',
     description: 'Salami ahumado grado superior.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'salami-naranjal-latino',
@@ -236,6 +257,7 @@ export const PRODUCTS: Product[] = [
     category: 'salamis',
     description: 'Salami de la línea Naranjal Latino.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'salami-tipo-argentino',
@@ -244,6 +266,7 @@ export const PRODUCTS: Product[] = [
     category: 'salamis',
     description: 'Salami curado tipo argentino, sabor intenso.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'salami-de-pollo-agrofem',
@@ -252,6 +275,7 @@ export const PRODUCTS: Product[] = [
     category: 'salamis',
     description: 'Salami de pollo, alternativa más liviana. Por libra.',
     unit: 'libra',
+    hasPhoto: true,
   },
 
   // JAMONES Y JAMONETAS (11)
@@ -262,6 +286,7 @@ export const PRODUCTS: Product[] = [
     category: 'jamones',
     description: 'Jamón picnic, marca El Cerro. Por libra.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'jamon-picnic-del-cerro-economico',
@@ -270,6 +295,7 @@ export const PRODUCTS: Product[] = [
     category: 'jamones',
     description: 'Presentación económica del jamón picnic.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'jamon-picnic-cocido',
@@ -278,6 +304,7 @@ export const PRODUCTS: Product[] = [
     category: 'jamones',
     description: 'Jamón picnic cocido, listo para servir.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'jamon-cocido-corriente',
@@ -286,6 +313,7 @@ export const PRODUCTS: Product[] = [
     category: 'jamones',
     description: 'Jamón cocido de uso diario, rendidor.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'jamon-caserio',
@@ -294,6 +322,7 @@ export const PRODUCTS: Product[] = [
     category: 'jamones',
     description: 'Jamón marca Caserío, venta por libra.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'jamon-de-pavo-checo',
@@ -302,6 +331,7 @@ export const PRODUCTS: Product[] = [
     category: 'jamones',
     description: 'Jamón de pavo, opción más liviana.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'jamoneta',
@@ -310,6 +340,7 @@ export const PRODUCTS: Product[] = [
     category: 'jamones',
     description: 'Jamoneta clásica, por libra.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'jamoneta-la-criolla',
@@ -318,6 +349,7 @@ export const PRODUCTS: Product[] = [
     category: 'jamones',
     description: 'Jamoneta marca La Criolla.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'jamoneta-de-pollo-ducarnes',
@@ -326,6 +358,7 @@ export const PRODUCTS: Product[] = [
     category: 'jamones',
     description: 'Jamoneta de pollo, marca Ducarnes.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'jamoneta-moyeta',
@@ -334,6 +367,7 @@ export const PRODUCTS: Product[] = [
     category: 'jamones',
     description: 'Jamoneta marca La Moyeta.',
     unit: 'libra',
+    hasPhoto: true,
   },
   {
     slug: 'jamoneta-mortadela-la-moyeta',
@@ -342,6 +376,7 @@ export const PRODUCTS: Product[] = [
     category: 'jamones',
     description: 'Mortadela de la línea La Moyeta.',
     unit: 'libra',
+    hasPhoto: true,
   },
 
   // SALCHICHAS (5)
