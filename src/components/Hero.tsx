@@ -6,78 +6,78 @@ import { IconWhatsApp } from './Icons';
 import { WA_GENERAL } from '../utils/whatsapp';
 
 /**
- * Single-slide hero. Phase 1 has no prices, so a rotating promo carousel would
- * carry nothing — the shell below stays slider-ready for Phase 2.
+ * Split hero: the copy sits on a dark panel on the left, the photo owns the
+ * right. The panel colour is sampled from the photo's own slate background so
+ * the two meet without a seam, and keeping the image to roughly half the
+ * viewport means it is barely scaled up.
  */
 export default function Hero() {
   const [hasImage, setHasImage] = useState(true);
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll();
 
-  const scale = useTransform(scrollYProgress, [0, 0.4], [1, 1.12]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
-  const contentY = useTransform(scrollYProgress, [0, 0.4], [0, 80]);
+  const scale = useTransform(scrollYProgress, [0, 0.4], [1, 1.1]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 0.4], [0, 60]);
 
   return (
     <section className="hero" id="inicio">
-      <motion.div
-        className="hero__media"
-        style={reduceMotion ? undefined : { scale }}
-      >
+      <div className="hero__media">
         {hasImage ? (
-          <img
-            className="hero__image"
-            src="/images/hero.jpg"
-            alt="Surtido de embutidos de Ahumados Villacon"
-            width={2400}
-            height={1400}
-            fetchpriority="high"
-            decoding="async"
-            onError={() => setHasImage(false)}
-          />
+          <motion.div
+            className="hero__media-inner"
+            style={reduceMotion ? undefined : { scale }}
+          >
+            <img
+              className="hero__image"
+              src="/images/hero.webp"
+              alt="Tabla de quesos, uvas y frutos secos de Ahumados Villacon"
+              width={526}
+              height={360}
+              fetchpriority="high"
+              decoding="async"
+              onError={() => setHasImage(false)}
+            />
+          </motion.div>
         ) : (
-          // Photo not delivered yet — neutral block, never a stock image.
           <div className="hero__fallback" aria-hidden="true">
             <span className="hero__fallback-diamond" />
           </div>
         )}
-      </motion.div>
-
-      <div className="hero__overlay" aria-hidden="true" />
+        {/* Fades the photo into the copy panel instead of cutting it off. */}
+        <span className="hero__fade" aria-hidden="true" />
+      </div>
 
       <motion.div
         className="container hero__content"
         style={reduceMotion ? undefined : { opacity: contentOpacity, y: contentY }}
       >
-        <span className="eyebrow hero__eyebrow">
-          Embutidos &middot; Al por mayor y al detalle
-        </span>
+        <div className="hero__copy">
+          <span className="eyebrow hero__eyebrow">
+            Embutidos y quesos &middot; Al por mayor y al detalle
+          </span>
 
-        <RevealText tag="h1" className="hero__title" center>
-          Sabor ahumado que tu negocio necesita
-        </RevealText>
+          <RevealText tag="h1" className="hero__title">
+            Sabor ahumado que tu negocio necesita
+          </RevealText>
 
-        <p className="hero__subline">
-          Salamis, jamones, salchichas y longanizas de las mejores marcas del país.
-          Servimos colmados, cafeterías y restaurantes en todo Santo Domingo.
-        </p>
+          <p className="hero__subline">
+            Salamis, jamones, salchichas, longanizas y quesos de las mejores marcas
+            del país. Servimos colmados, cafeterías y restaurantes en todo Santo
+            Domingo.
+          </p>
 
-        <div className="hero__actions">
-          <MagneticButton href="#catalogo" className="btn btn--primary" newTab={false}>
-            Ver productos
-          </MagneticButton>
-          <MagneticButton href={WA_GENERAL} className="btn btn--ghost-light">
-            <IconWhatsApp size={16} />
-            Pedir por WhatsApp
-          </MagneticButton>
+          <div className="hero__actions">
+            <MagneticButton href="#catalogo" className="btn btn--primary" newTab={false}>
+              Ver productos
+            </MagneticButton>
+            <MagneticButton href={WA_GENERAL} className="btn btn--ghost-light">
+              <IconWhatsApp size={16} />
+              Pedir por WhatsApp
+            </MagneticButton>
+          </div>
         </div>
       </motion.div>
-
-      <div className="hero__scroll" aria-hidden="true">
-        <span className="hero__scroll-line">
-          <span className="hero__scroll-dot" />
-        </span>
-      </div>
     </section>
   );
 }

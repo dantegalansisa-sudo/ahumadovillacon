@@ -1,77 +1,27 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BUSINESS, NAV, isPending } from '../data/business';
+import { NAV } from '../data/business';
 import { useScrolled } from '../hooks/useScrolled';
 import Wordmark from './Wordmark';
 import MobileMenu from './MobileMenu';
-import {
-  IconFacebook,
-  IconInstagram,
-  IconMenu,
-  IconWhatsApp,
-} from './Icons';
-import { WA_GENERAL } from '../utils/whatsapp';
+import { IconMenu } from './Icons';
 
+/**
+ * One row: three links, the wordmark, three links. The old topbar is gone so
+ * the hero starts higher; the phone number lives in the floating WhatsApp
+ * button, the hero CTA, Visítanos and the footer.
+ */
 export default function Header() {
   const scrolled = useScrolled(40);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const leftLinks = NAV.slice(0, 3);
   const rightLinks = NAV.slice(3);
-  // Social handles are still unconfirmed; the icons appear on their own once
-  // business.ts has real URLs. Nothing is linked to a guessed profile.
-  const hasSocials = !isPending(BUSINESS.instagram) || !isPending(BUSINESS.facebook);
 
   return (
     <>
       <header className={`header ${scrolled ? 'is-scrolled' : ''}`}>
-        <div className="header__topbar">
-          <div className="container header__topbar-inner">
-            <div className="header__socials">
-              {hasSocials ? (
-                <>
-                  {!isPending(BUSINESS.instagram) && (
-                    <a
-                      href={BUSINESS.instagram}
-                      aria-label="Instagram de Ahumados Villacon"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <IconInstagram size={16} />
-                    </a>
-                  )}
-                  {!isPending(BUSINESS.facebook) && (
-                    <a
-                      href={BUSINESS.facebook}
-                      aria-label="Facebook de Ahumados Villacon"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <IconFacebook size={16} />
-                    </a>
-                  )}
-                </>
-              ) : (
-                <span className="header__tagline">
-                  Embutidos al por mayor y al detalle
-                </span>
-              )}
-            </div>
-
-            <a
-              className="header__wa"
-              href={WA_GENERAL}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <IconWhatsApp size={14} />
-              <span className="header__wa-label">WhatsApp</span>
-              <span>{BUSINESS.whatsappDisplay}</span>
-            </a>
-          </div>
-        </div>
-
-        <div className="container header__main">
+        <div className="container header__row">
           <button
             type="button"
             className="header__burger"
@@ -83,39 +33,32 @@ export default function Header() {
             <IconMenu size={26} />
           </button>
 
-          <Link to="/#inicio" className="header__brand">
-            <Wordmark size="header" compact={scrolled} />
-          </Link>
-
-          <a
-            className="header__cta btn btn--primary"
-            href={WA_GENERAL}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Pedir
-          </a>
-        </div>
-
-        <nav className="header__nav" aria-label="Navegación principal">
-          <div className="container header__nav-inner">
-            <ul className="header__nav-group">
+          <nav className="header__nav header__nav--left" aria-label="Navegación principal">
+            <ul>
               {leftLinks.map((link) => (
                 <li key={link.href}>
                   <Link to={link.href}>{link.label}</Link>
                 </li>
               ))}
             </ul>
-            <span className="header__nav-diamond" aria-hidden="true" />
-            <ul className="header__nav-group">
+          </nav>
+
+          {/* No aria-label: the wordmark text is the accessible name, and a
+              shorter label would not contain the visible string. */}
+          <Link to="/#inicio" className="header__brand">
+            <Wordmark size="header" compact={scrolled} />
+          </Link>
+
+          <nav className="header__nav header__nav--right" aria-label="Navegación secundaria">
+            <ul>
               {rightLinks.map((link) => (
                 <li key={link.href}>
                   <Link to={link.href}>{link.label}</Link>
                 </li>
               ))}
             </ul>
-          </div>
-        </nav>
+          </nav>
+        </div>
       </header>
 
       {/* Holds the at-rest height of the fixed header. */}

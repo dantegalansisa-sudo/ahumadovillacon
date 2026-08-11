@@ -133,7 +133,7 @@
    Header
    ========================================================= */
 
-/* Fixed rather than sticky: the topbar collapses on scroll, and in flow that
+/* Fixed rather than sticky: the wordmark shrinks on scroll, and in flow that
    height change would drag every section up (a real layout shift). The spacer
    below holds the at-rest height instead. */
 .header {
@@ -146,10 +146,6 @@
   transition: background 0.3s var(--ease-snappy);
 }
 
-.header-spacer {
-  height: var(--header-h);
-}
-
 .header.is-scrolled {
   background: rgba(250, 246, 240, 0.92);
   backdrop-filter: blur(12px);
@@ -157,64 +153,19 @@
   border-bottom: 1px solid var(--border);
 }
 
-.header__topbar {
-  background: var(--cream-deep);
-  font-size: var(--fs-small);
-  color: var(--ink-muted);
-  max-height: 48px;
-  overflow: hidden;
-  transition:
-    max-height 0.35s var(--ease-premium),
-    opacity 0.25s var(--ease-snappy);
+.header-spacer {
+  height: var(--header-h);
 }
 
-.header.is-scrolled .header__topbar {
-  max-height: 0;
-  opacity: 0;
-}
-
-.header__topbar-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding-top: 9px;
-  padding-bottom: 9px;
-}
-
-.header__socials {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.header__socials a:hover {
-  color: var(--ember);
-}
-
-.header__tagline {
-  letter-spacing: 0.04em;
-}
-
-.header__wa {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 500;
-  color: var(--ink);
-  transition: color 0.25s var(--ease-snappy);
-}
-
-.header__wa:hover {
-  color: var(--ember);
-}
-
-.header__main {
+/* Three links, the wordmark, three links — the wordmark stays optically
+   centred because both side columns are equal fractions. */
+.header__row {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  padding-top: 16px;
-  padding-bottom: 14px;
+  gap: 40px;
+  padding-top: 18px;
+  padding-bottom: 16px;
 }
 
 .header__brand {
@@ -222,30 +173,21 @@
   justify-self: center;
 }
 
-.header__burger,
-.header__cta {
-  display: none;
-}
-
-.header__nav {
-  border-top: 1px solid var(--border);
-}
-
-.header__nav-inner {
+.header__nav ul {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 40px;
-  padding-top: 13px;
-  padding-bottom: 13px;
+  gap: 34px;
 }
 
-.header__nav-group {
-  display: flex;
-  gap: 40px;
+.header__nav--left ul {
+  justify-content: flex-end;
 }
 
-.header__nav-group a {
+.header__nav--right ul {
+  justify-content: flex-start;
+}
+
+.header__nav a {
   position: relative;
   display: inline-block;
   padding-bottom: 3px;
@@ -253,11 +195,12 @@
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  white-space: nowrap;
   color: var(--ink-soft);
   transition: color 0.25s var(--ease-snappy);
 }
 
-.header__nav-group a::after {
+.header__nav a::after {
   content: '';
   position: absolute;
   left: 0;
@@ -268,20 +211,28 @@
   transition: width 0.35s var(--ease-premium);
 }
 
-.header__nav-group a:hover {
+.header__nav a:hover {
   color: var(--ink);
 }
 
-.header__nav-group a:hover::after {
+.header__nav a:hover::after {
   width: 100%;
 }
 
-.header__nav-diamond {
-  width: 6px;
-  height: 6px;
-  background: var(--tan);
-  transform: rotate(45deg);
-  flex: none;
+.header__burger {
+  display: none;
+}
+
+/* Six links plus the wordmark stop fitting comfortably before the burger
+   breakpoint, so the gaps tighten first. */
+@media (max-width: 1240px) {
+  .header__row {
+    gap: 24px;
+  }
+
+  .header__nav ul {
+    gap: 22px;
+  }
 }
 
 /* =========================================================
@@ -350,23 +301,31 @@
 }
 
 /* =========================================================
-   Hero
+   Hero — split: copy panel left, photo right
    ========================================================= */
 
 .hero {
   position: relative;
-  min-height: 88vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  min-height: clamp(500px, 62vh, 660px);
   overflow: hidden;
-  background: var(--ink);
+  background: var(--hero-bg);
 }
 
+/* The photo covers the right side only, so it is shown near its real size
+   instead of being stretched across the whole viewport. */
 .hero__media {
   position: absolute;
-  inset: 0;
-  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 58%;
+}
+
+.hero__media-inner {
+  width: 100%;
+  height: 100%;
   will-change: transform;
 }
 
@@ -374,14 +333,29 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* Keeps the cheese board in frame and trims the empty slate on the left,
+     which the copy panel already provides. */
+  object-position: 72% center;
+}
+
+.hero__fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    var(--hero-bg) 0%,
+    rgba(38, 38, 43, 0.92) 18%,
+    rgba(38, 38, 43, 0.45) 40%,
+    rgba(38, 38, 43, 0) 66%
+  );
 }
 
 .hero__fallback {
   width: 100%;
   height: 100%;
-  background: var(--cream-deep);
   display: grid;
   place-items: center;
+  background: var(--hero-bg);
 }
 
 .hero__fallback-diamond {
@@ -392,24 +366,15 @@
   transform: rotate(45deg);
 }
 
-.hero__overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    180deg,
-    rgba(28, 24, 21, 0.35) 0%,
-    rgba(28, 24, 21, 0.78) 100%
-  );
-}
-
 .hero__content {
   position: relative;
   z-index: 2;
-  max-width: calc(900px + var(--container-pad) * 2);
-  text-align: center;
-  padding-top: 140px;
-  padding-bottom: 150px;
+  padding-top: 88px;
+  padding-bottom: 88px;
+}
+
+.hero__copy {
+  max-width: 33rem;
 }
 
 .hero__eyebrow {
@@ -418,65 +383,82 @@
 
 .hero__title {
   color: var(--cream);
+  font-size: clamp(2.75rem, 5.4vw, 4.75rem);
 }
 
 .hero__subline {
-  margin: 26px auto 0;
-  max-width: 60ch;
-  font-size: 1.125rem;
-  color: rgba(250, 246, 240, 0.88);
+  margin-top: 24px;
+  max-width: 46ch;
+  font-size: 1.0625rem;
+  color: rgba(250, 246, 240, 0.82);
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 40px;
+  gap: 14px;
+  margin-top: 36px;
 }
 
-.hero__scroll {
-  position: absolute;
-  bottom: 26px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-}
-
-.hero__scroll-line {
-  display: block;
-  position: relative;
-  width: 1px;
-  height: 56px;
-  background: rgba(250, 246, 240, 0.3);
-  overflow: hidden;
-}
-
-.hero__scroll-dot {
-  position: absolute;
-  top: 0;
-  left: -1.5px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--cream);
-  animation: scroll-dot 2s var(--ease-premium) infinite;
-}
-
-@keyframes scroll-dot {
-  0% {
-    transform: translateY(-6px);
-    opacity: 0;
+@media (max-width: 1100px) {
+  .hero__media {
+    width: 52%;
   }
-  25% {
-    opacity: 1;
+
+  .hero__copy {
+    max-width: 26rem;
   }
-  75% {
-    opacity: 1;
+}
+
+/* Stacked: photo on top, copy underneath, joined by a vertical fade. */
+@media (max-width: 900px) {
+  .hero {
+    display: block;
+    min-height: 0;
   }
-  100% {
-    transform: translateY(54px);
-    opacity: 0;
+
+  .hero__media {
+    position: relative;
+    width: 100%;
+    height: min(52vw, 320px);
+  }
+
+  .hero__image {
+    object-position: 72% center;
+  }
+
+  .hero__fade {
+    background: linear-gradient(
+      180deg,
+      rgba(38, 38, 43, 0) 45%,
+      rgba(38, 38, 43, 0.75) 78%,
+      var(--hero-bg) 100%
+    );
+  }
+
+  .hero__content {
+    padding-top: 28px;
+    padding-bottom: 64px;
+  }
+
+  .hero__copy {
+    max-width: none;
+  }
+
+  .hero__subline {
+    max-width: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero__actions .magnetic,
+  .hero__actions .btn {
+    width: 100%;
   }
 }
 
@@ -1916,7 +1898,7 @@ body.has-order-bar .footer__bottom {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1080px) {
   .header__nav {
     display: none;
   }
@@ -1926,14 +1908,6 @@ body.has-order-bar .footer__bottom {
     grid-column: 1;
     justify-self: start;
     color: var(--ink);
-  }
-
-  .header__cta {
-    display: inline-flex;
-    grid-column: 3;
-    justify-self: end;
-    padding: 12px 20px;
-    font-size: 0.6875rem;
   }
 
   .value-strip__grid {
@@ -1970,22 +1944,13 @@ body.has-order-bar .footer__bottom {
 }
 
 @media (max-width: 760px) {
-  /* Topbar keeps only the phone number so it never wraps out of its band. */
-  .header__socials,
-  .header__wa-label {
-    display: none;
-  }
-
-  .header__topbar-inner {
-    justify-content: center;
-  }
-
   .wordmark--header,
   .wordmark--header.is-compact {
     font-size: 1.375rem;
   }
 
-  .wordmark--header .wordmark__sub {
+  .wordmark--header .wordmark__sub,
+  .wordmark--header.is-compact .wordmark__sub {
     font-size: 0.5625rem;
     letter-spacing: 0.14em;
     white-space: nowrap;

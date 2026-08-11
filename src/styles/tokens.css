@@ -22,6 +22,10 @@
   --tan: #c9a87c;
   --border: #e5dcd1;
 
+  /* Sampled from the left third of the hero photo so the copy panel and the
+     image meet without a visible seam. Cooler than --ink on purpose. */
+  --hero-bg: #26262b;
+
   /* Layout constants — NEXIX standard */
   --section-pad: 120px;
   --container: 1320px;
@@ -41,15 +45,17 @@
   --fs-small: 0.875rem;
   --fs-eyebrow: 0.75rem;
 
-  /* Chrome — measured header height at rest and once scrolled (the topbar
-     collapses). Drives the fixed-header spacer, anchor offsets and the sticky
+  /* Chrome — measured header height at rest and once scrolled (the wordmark
+     shrinks). Drives the fixed-header spacer, anchor offsets and the sticky
      filter bar, so these must match the real rendered heights. */
-  --header-h: 240px;
-  --header-h-compact: 184px;
+  --header-h: 142px;
+  --header-h-compact: 129px;
   --ease-premium: cubic-bezier(0.76, 0, 0.24, 1);
   --ease-snappy: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* The wordmark sets the header height, and it is the same with the nav links
+   or with the burger, so these only change where the wordmark shrinks. */
 @media (max-width: 1024px) {
   :root {
     --container-pad: 40px;
@@ -57,19 +63,11 @@
   }
 }
 
-@media (max-width: 1000px) {
-  :root {
-    /* Nav row is replaced by the burger menu below this width. */
-    --header-h: 184px;
-    --header-h-compact: 128px;
-  }
-}
-
 @media (max-width: 720px) {
   :root {
     --container-pad: 24px;
     --section-pad: 72px;
-    --header-h: 164px;
-    --header-h-compact: 126px;
+    --header-h: 124px;
+    --header-h-compact: 124px;
   }
 }
