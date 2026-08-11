@@ -82,7 +82,8 @@ export const CATEGORIES: CategoryMeta[] = [
     label: 'Salamis',
     chipLabel: 'Salamis',
     blurb: 'Supremo, super especial, fino y ahumado. Las marcas que ya pide tu cliente.',
-    // Sin portada: la imagen entregada trae marca de agua de Envato Elements.
+    // Preview de Envato con marca de agua; publicada por indicación del cliente.
+    image: '/categories/salamis.webp',
     h1: 'Salami al por mayor en Santo Domingo',
     metaTitle: 'Salami al por mayor en Santo Domingo | Ahumados Villacon',
     metaDescription:

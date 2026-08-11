@@ -75,12 +75,12 @@ const MAP = {
 /**
  * Category covers. These are cropped to 4:3 and land in /public/categories.
  *
- * 'SALAMI PORTADA.png' is deliberately absent: it carries a repeated "Envato
- * Elements" watermark, so it is an unlicensed stock preview and must not be
- * published. The salamis card keeps its placeholder until a clean image
- * arrives.
+ * Note on 'SALAMI PORTADA.png': the source carries a repeated "Envato
+ * Elements" watermark, so it is a stock preview. Published at the client's
+ * explicit instruction; replace it with the licensed version when available.
  */
 const COVERS = {
+  'PORTADA/SALAMI PORTADA.png': 'salamis',
   'PORTADA/JAMONES Y JAMONETAS PORTADA.png': 'jamones',
   'PORTADA/LONGANIZAS PORTADA.png': 'longanizas',
   'PORTADA/SALCHICHA PORTADA.png': 'salchichas',
