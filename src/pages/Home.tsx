@@ -17,7 +17,7 @@ import WhatsAppFab from '../components/WhatsAppFab';
 
 const TITLE = 'Ahumados Villacon | Embutidos al por mayor y detalle — Santo Domingo';
 const DESCRIPTION =
-  'Salamis, jamones, salchichas, longanizas y tocineta de las mejores marcas. Venta al por mayor y al detalle en el Mercado de Villa Consuelo, Santo Domingo. Sin pedido mínimo. Pide por WhatsApp.';
+  'Salamis, jamones, salchichas, longanizas, quesos y tocineta de las mejores marcas. Venta al por mayor y al detalle en el Mercado de Villa Consuelo, Santo Domingo. Sin pedido mínimo. Pide por WhatsApp.';
 
 export default function Home() {
   return (

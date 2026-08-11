@@ -14,10 +14,11 @@ export type Category =
   | 'jamones'
   | 'salchichas'
   | 'longanizas'
+  | 'quesos'
   | 'especialidades';
 
 /** How the product is sold. Drives the quantity wording in the order list. */
-export type Unit = 'libra' | 'unidad' | 'paquete';
+export type Unit = 'libra' | 'unidad' | 'paquete' | 'lata';
 
 export interface Product {
   slug: string;
@@ -49,6 +50,7 @@ export const UNIT_LABEL: Record<Unit, { one: string; many: string }> = {
   libra: { one: 'libra', many: 'libras' },
   unidad: { one: 'unidad', many: 'unidades' },
   paquete: { one: 'paquete', many: 'paquetes' },
+  lata: { one: 'lata', many: 'latas' },
 };
 
 export function formatQty(qty: number, unit: Unit): string {
@@ -141,6 +143,22 @@ export const CATEGORIES: CategoryMeta[] = [
       ORDER_LINE,
     ],
     gridHeading: "Todas nuestras longanizas",
+  },
+  {
+    id: 'quesos',
+    label: 'Quesos',
+    chipLabel: 'Quesos',
+    blurb: 'Amarillo, de freír, gouda, danés y mozzarella. Por libra, unidad o lata.',
+    image: '/categories/quesos.webp',
+    h1: 'Quesos al por mayor en Santo Domingo',
+    metaTitle: 'Quesos al por mayor en Santo Domingo | Ahumados Villacon',
+    metaDescription:
+      'Queso amarillo cheddar, blanco de freír, gouda, danés y mozzarella. Al por mayor y al detalle en el Mercado de Villa Consuelo. Pide por WhatsApp.',
+    intro: [
+      'Diez quesos en catálogo: amarillo cheddar, blanco de freír, gouda, danés, mozzarella y las marcas de la casa, por libra, por unidad o en lata.',
+      ORDER_LINE,
+    ],
+    gridHeading: 'Todos nuestros quesos',
   },
   {
     id: 'especialidades',
@@ -457,6 +475,100 @@ export const PRODUCTS: Product[] = [
     hasPhoto: true,
   },
 
+  // QUESOS (10)
+  // Names are cleaned display versions of the client's inventory sheet; `ref`
+  // keeps the original string. Units come from the sheet (LIB / UDS / LAT).
+  {
+    slug: 'queso-amarillo-cheddar',
+    name: 'Queso Amarillo Cheddar',
+    ref: 'QUESO AMARILLO CHEDAR',
+    category: 'quesos',
+    description: 'Queso amarillo tipo cheddar. Venta por libra.',
+    unit: 'libra',
+    hasPhoto: true,
+  },
+  {
+    slug: 'queso-blanco-de-freir',
+    name: 'Queso Blanco de Freír',
+    ref: 'QUESO BLANCO DE FREIR',
+    category: 'quesos',
+    description: 'Queso blanco para freír. Venta por libra.',
+    unit: 'libra',
+    hasPhoto: true,
+  },
+  {
+    slug: 'queso-blanco-lismarie',
+    name: 'Queso Blanco Lismarie',
+    ref: 'QUESO BLANCO LISMARIE',
+    category: 'quesos',
+    description: 'Queso blanco marca Lismarie, por unidad.',
+    unit: 'unidad',
+    hasPhoto: true,
+  },
+  {
+    slug: 'queso-cayacoa',
+    name: 'Queso Cayacoa',
+    ref: 'QUESO CAYACOA',
+    category: 'quesos',
+    description: 'Queso marca Cayacoa. Venta por libra.',
+    unit: 'libra',
+    hasPhoto: true,
+  },
+  {
+    slug: 'queso-cheddar-en-lata',
+    name: 'Queso Cheddar en Lata',
+    ref: 'QUESO CHEDDAR EN LATA',
+    category: 'quesos',
+    description: 'Queso cheddar en lata, listo para servir.',
+    unit: 'lata',
+    hasPhoto: true,
+  },
+  {
+    slug: 'queso-danes',
+    name: 'Queso Danés',
+    ref: 'QUESO DANES',
+    category: 'quesos',
+    description: 'Queso danés. Venta por libra.',
+    unit: 'libra',
+    hasPhoto: true,
+  },
+  {
+    slug: 'queso-geo-geo',
+    name: 'Queso Geo Geo',
+    ref: 'QUESO GEO GEO',
+    category: 'quesos',
+    description: 'Queso marca Geo Geo. Venta por libra.',
+    unit: 'libra',
+    hasPhoto: true,
+  },
+  {
+    slug: 'queso-gouda-bunwo',
+    name: 'Queso Gouda Bunwo',
+    ref: 'QUESO GOUDA BUNWO',
+    category: 'quesos',
+    description: 'Queso gouda marca Bunwo. Venta por libra.',
+    unit: 'libra',
+    hasPhoto: true,
+  },
+  {
+    slug: 'queso-mozzarella',
+    name: 'Queso Mozzarella',
+    ref: 'QUESO MOZARELA',
+    category: 'quesos',
+    description: 'Queso mozzarella. Venta por libra.',
+    unit: 'libra',
+    hasPhoto: true,
+  },
+  {
+    slug: 'queso-yaquelin',
+    name: 'Queso Yaquelin',
+    ref: 'QUESO YAQUELIN',
+    category: 'quesos',
+    description: 'Queso marca Yaquelin.',
+    unit: 'libra',
+    hasPhoto: true,
+  },
+
   // ESPECIALIDADES (2)
   {
     slug: 'tocineta-rebanada',
@@ -497,6 +609,7 @@ export const CATEGORY_LABEL: Record<Category, string> = {
   jamones: 'Jamones y jamonetas',
   salchichas: 'Salchichas',
   longanizas: 'Longanizas',
+  quesos: 'Quesos',
   especialidades: 'Especialidades',
 };
 

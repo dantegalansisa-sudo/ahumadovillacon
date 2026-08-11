@@ -7,7 +7,7 @@ Catálogo de embutidos con todos los pedidos hacia WhatsApp. Sin carrito, sin ch
 | Ruta | Qué es |
 |---|---|
 | `/` | Home de una sola página con navegación por anclas |
-| `/productos/:categoria` | 5 páginas indexables: `salamis`, `jamones`, `salchichas`, `longanizas`, `especialidades` |
+| `/productos/:categoria` | 6 páginas indexables: `salamis`, `jamones`, `salchichas`, `longanizas`, `quesos`, `especialidades` |
 | cualquier otra | 404 con `noindex` |
 
 **Stack:** React 18 + TypeScript + Vite + Framer Motion + CSS vanilla (sin Tailwind).
@@ -30,9 +30,10 @@ cantidad y envía **un solo mensaje** de WhatsApp con todo. Vive en
 Cada producto tiene un campo `unit` (`libra`, `unidad` o `paquete`) que define cómo se
 cuenta y cómo se escribe en el mensaje.
 
-> **Por confirmar con el cliente:** la unidad está tomada de la descripción del propio
-> producto cuando la dice (5 de 34). En los otros 29 se asumió `libra` por categoría.
-> Si algún producto se vende por unidad o paquete, se corrige en `products.ts`.
+> **Por confirmar con el cliente:** en los embutidos la unidad sale de la descripción
+> cuando la dice (5 de 34) y en los otros 29 se asumió `libra` por categoría. En los
+> quesos viene de la hoja de inventario (LIB / UDS / LAT), salvo el Yaquelin que no la
+> traía y quedó en `libra`.
 
 ### Precios
 
@@ -75,12 +76,12 @@ para que el cliente llegue directo: se agrega en `ADDRESS` dentro de `business.t
 
 ### 3. Sección Nosotros — `src/components/About.tsx`
 
-Los tres contadores usan cifras reales del catálogo (34 productos, 5 familias, 9 marcas
+Los tres contadores usan cifras reales del catálogo (44 productos, 6 familias, 9 marcas
 de salami). Si el cliente da años en el mercado o clientes atendidos, se sustituyen ahí.
 
 ### 4. Fotos
 
-**Listas:** los 34 productos y las 5 portadas de categoría.
+**Listas:** los 44 productos y las 6 portadas de categoría.
 **Faltan:** el hero, el local y la tarjeta social (`og-image.jpg`). Cuando exista esta
 última hay que poner `HAS_OG_IMAGE = true` en `src/utils/schema.ts`: mientras sea false
 no se anuncia un `og:image` que daría 404 al compartir por WhatsApp.

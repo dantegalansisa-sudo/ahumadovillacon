@@ -70,6 +70,17 @@ const MAP = {
   // Delivered inside the LONGANIZAS folder, but they are especialidades.
   'LONGANIZAS/TOCINETA REBANADA.png': 'tocineta-rebanada',
   'LONGANIZAS/PEPERONI.png': 'pepperoni',
+
+  'quesos/QUESO AMARILLO CHEDAR.png': 'queso-amarillo-cheddar',
+  'quesos/QUESO BLANCO DE FREIR.png': 'queso-blanco-de-freir',
+  'quesos/QUESO BLANCO LISMARIE.png': 'queso-blanco-lismarie',
+  'quesos/QUESO CAYACOA.png': 'queso-cayacoa',
+  'quesos/QUESO CHEDDAR EN LATA.png': 'queso-cheddar-en-lata',
+  'quesos/QUESO DANES.png': 'queso-danes',
+  'quesos/QUESO GEO GEO.png': 'queso-geo-geo',
+  'quesos/QUESO GOUDA BUNWO.png': 'queso-gouda-bunwo',
+  'quesos/QUESO MOZARELA.png': 'queso-mozzarella',
+  'quesos/QUESO YAQUELIN.png': 'queso-yaquelin',
 };
 
 /**
@@ -81,6 +92,9 @@ const MAP = {
  * also drops the promo text that ran across the top of the original.
  */
 const COVERS = {
+  // The hero photo is a cheese board, so it also serves as the quesos cover.
+  // focusX pushes the 4:3 crop right, away from the empty slate.
+  'heros.jpg': { id: 'quesos', focusX: 0.74 },
   'SALAMIS/SALAMI TOLENTINO AHUMADO GRADO SUPERIOR.png': 'salamis',
   'PORTADA/JAMONES Y JAMONETAS PORTADA.png': 'jamones',
   'PORTADA/LONGANIZAS PORTADA.png': 'longanizas',
@@ -177,23 +191,26 @@ for (const [file, slug] of Object.entries(MAP)) {
 
 if (!existsSync(COVER_DIR)) mkdirSync(COVER_DIR, { recursive: true });
 
-for (const [file, id] of Object.entries(COVERS)) {
+for (const [file, entry] of Object.entries(COVERS)) {
+  const id = typeof entry === 'string' ? entry : entry.id;
+  const focusX = typeof entry === 'string' ? 0.5 : entry.focusX;
   if (!existsSync(path.join(SRC_DIR, file))) {
     console.log(`falta la portada: ${file}`);
     continue;
   }
 
   const result = await page.evaluate(
-    async ({ url, maxWidth, ratio, quality }) => {
+    async ({ url, maxWidth, ratio, quality, focus }) => {
       const img = new Image();
       img.crossOrigin = 'anonymous';
       img.src = url;
       await img.decode();
 
-      // Largest 4:3 box that fits inside the source, centred (a cover crop).
+      // Largest 4:3 box that fits inside the source. focus slides it along the
+      // horizontal axis: 0.5 is centred, 0.74 favours the right.
       const cropW = Math.min(img.naturalWidth, img.naturalHeight * ratio);
       const cropH = cropW / ratio;
-      const sx = (img.naturalWidth - cropW) / 2;
+      const sx = (img.naturalWidth - cropW) * focus;
       const sy = (img.naturalHeight - cropH) / 2;
 
       const outW = Math.round(Math.min(maxWidth, cropW));
@@ -215,6 +232,7 @@ for (const [file, id] of Object.entries(COVERS)) {
     },
     {
       url: `http://localhost:${PORT}/${file.split('/').map(encodeURIComponent).join('/')}`,
+      focus: focusX,
       maxWidth: COVER_MAX_WIDTH,
       ratio: COVER_RATIO,
       quality: QUALITY,
@@ -222,6 +240,9 @@ for (const [file, id] of Object.entries(COVERS)) {
   );
 
   const buffer = Buffer.from(result.dataUrl.split(',')[1], 'base64');
+  if (buffer.length < 4096) {
+    throw new Error(`portada ${id}: la imagen salió vacía (${buffer.length} bytes)`);
+  }
   writeFileSync(path.join(COVER_DIR, `${id}.webp`), buffer);
   console.log(
     `portada ${id.padEnd(24)} ${result.outW}x${result.outH}  ${Math.round(buffer.length / 1024)} KB`,

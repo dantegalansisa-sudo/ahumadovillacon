@@ -22,7 +22,7 @@ export default function Footer() {
         <div className="footer__brand">
           <Wordmark variant="dark" size="footer" />
           <p className="footer__desc">
-            Distribuidor de embutidos en el Mercado de Villa Consuelo, Santo
+            Distribuidor de embutidos y quesos en el Mercado de Villa Consuelo, Santo
             Domingo. Venta al por mayor y al detalle para colmados, cafeterías,
             restaurantes y hogares.
           </p>

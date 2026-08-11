@@ -21,7 +21,7 @@ export default function Categories() {
         <div className="section-head section-head--center">
           <span className="eyebrow">Nuestro catálogo</span>
           <RevealText tag="h2" id="categorias-title" center>
-            Cinco familias de producto
+            Seis familias de producto
           </RevealText>
         </div>
 

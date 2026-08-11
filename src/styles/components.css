@@ -516,22 +516,24 @@
    Categories
    ========================================================= */
 
+/* Twelve columns divide evenly by both rows of the asymmetric layout:
+   two wide cards on top, four narrower ones underneath. */
 .categories__grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   gap: 24px;
 }
 
 /* The spans live on the grid's direct children (the motion wrappers); the card
    itself fills whatever cell it lands in. */
 .categories__grid > * {
-  grid-column: span 2;
+  grid-column: span 3;
   display: flex;
 }
 
 .categories__grid > *:nth-child(1),
 .categories__grid > *:nth-child(2) {
-  grid-column: span 3;
+  grid-column: span 6;
 }
 
 .category-card {
@@ -1881,13 +1883,13 @@ body.has-order-bar .footer__bottom {
   }
 
   .categories__grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
 
   .categories__grid > *,
   .categories__grid > *:nth-child(1),
   .categories__grid > *:nth-child(2) {
-    grid-column: span 2;
+    grid-column: span 3;
   }
 
   .about__inner,
