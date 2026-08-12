@@ -1,5 +1,17 @@
 import type { Variants } from 'framer-motion';
 
+/**
+ * During the build-time prerender there is no window, and a motion element
+ * would write its hidden state (opacity:0, translated) straight into the
+ * static HTML — content a crawler reading the raw markup would see as hidden.
+ * `initial={false}` makes the server render the resting state instead; the
+ * animation still runs in the browser after hydration.
+ */
+export const IS_SERVER = typeof window === 'undefined';
+
+/** Use in place of `initial="hidden"` on anything that is prerendered. */
+export const INITIAL_HIDDEN = IS_SERVER ? false : 'hidden';
+
 /** Cubic-bezier tuple typed so Framer Motion accepts it directly. */
 export type Bezier = [number, number, number, number];
 

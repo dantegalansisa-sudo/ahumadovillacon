@@ -7,4 +7,10 @@ export default defineConfig({
     target: 'es2020',
     cssCodeSplit: false,
   },
+  ssr: {
+    // Bundle the dependencies into the prerender entry instead of leaving them
+    // external: react-helmet-async is CommonJS and Node's ESM loader cannot
+    // take named imports from it.
+    noExternal: true,
+  },
 });

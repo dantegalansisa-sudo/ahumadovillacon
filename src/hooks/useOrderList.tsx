@@ -65,15 +65,26 @@ function readStored(): OrderLine[] {
  * per product. It survives reloads and route changes through localStorage.
  */
 export function OrderListProvider({ children }: { children: React.ReactNode }) {
-  const [lines, setLines] = useState<OrderLine[]>(readStored);
+  // Starts empty on purpose. The prerendered HTML has no way to know what is
+  // in this visitor's storage, so reading it during the first render would
+  // make the client disagree with the server and break hydration. The saved
+  // list is pulled in right after mount instead.
+  const [lines, setLines] = useState<OrderLine[]>([]);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
+    setLines(readStored());
+    setLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (!loaded) return;
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(lines));
     } catch {
       // Storage unavailable: the list still works for this session.
     }
-  }, [lines]);
+  }, [lines, loaded]);
 
   // Lifts the footer clear of the fixed bar while the list has items.
   useEffect(() => {

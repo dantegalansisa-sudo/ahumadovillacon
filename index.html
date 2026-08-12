@@ -35,22 +35,22 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- The two latin woff2 files are preloaded so the real faces are ready at
-         first paint and the swap causes no reflow. If Google bumps the font
-         version these URLs simply miss and loading falls back to normal. -->
+    <!-- The latin woff2 subsets, which is what Spanish copy needs. Verify
+         these still match what the stylesheet requests after any font change:
+         a stale URL downloads a file the page never uses. -->
     <link
       rel="preload"
       as="font"
       type="font/woff2"
       crossorigin
-      href="https://fonts.gstatic.com/s/anton/v27/1Ptgg87LROyAm3Kz-C8CSKlv.woff2"
+      href="https://fonts.gstatic.com/s/anton/v27/1Ptgg87LROyAm3Kz-C8.woff2"
     />
     <link
       rel="preload"
       as="font"
       type="font/woff2"
       crossorigin
-      href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2"
+      href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2"
     />
     <!-- Loaded without blocking first render; metric-matched fallbacks in
          base.css keep the swap free of layout shift. -->

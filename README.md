@@ -146,3 +146,28 @@ se quedan versionados para poder regenerar a otro tamaño cuando haga falta.
   el CLS. Usa `em`.
 - El texto de cada página de categoría (h1, meta, intro, h2 de la grilla) vive en
   `CATEGORIES` dentro de `src/data/products.ts`.
+
+## Prerender (SEO)
+
+`npm run build` corre tres pasos: el bundle del navegador, un bundle SSR
+(`src/entry-server.tsx`) y `scripts/prerender.mjs`, que escribe un HTML real por
+ruta dentro de `dist/`. Sin esto las 7 URLs servían el mismo shell vacío: sin `h1`,
+sin texto de producto, sin JSON-LD y todas con el mismo `<title>`.
+
+Vercel revisa el sistema de archivos **antes** de aplicar los rewrites, así que
+`/productos/quesos` se sirve desde `dist/productos/quesos/index.html` y el rewrite
+solo atrapa las URLs que no tienen archivo.
+
+Tres cosas que hay que respetar al tocar componentes:
+
+- Usa `INITIAL_HIDDEN` (en `utils/easings.ts`) en vez de `initial="hidden"`. En el
+  servidor vale `false`, así el HTML estático no queda con `opacity:0`: contenido
+  que un rastreador leería como oculto.
+- Nada de `localStorage` ni `window` durante el primer render. La lista de pedido
+  arranca vacía y carga lo guardado en un `useEffect`, porque el HTML prerenderizado
+  no puede saber qué tiene ese visitante y la diferencia rompería la hidratación.
+- `AnimatedCounter` imprime la cifra final en el servidor y cuenta desde cero en el
+  navegador; lleva `suppressHydrationWarning` a propósito.
+
+`scripts/prerender.mjs` falla el build si alguna ruta sale por debajo de 12 KB,
+que es la señal de que volvió a generarse un shell vacío.

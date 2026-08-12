@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CATEGORIES, countByCategory } from '../data/products';
-import { containerVariants, cardVariants } from '../utils/easings';
+import { containerVariants, cardVariants, INITIAL_HIDDEN } from '../utils/easings';
 import RevealText from './RevealText';
 import ProductImage from './ProductImage';
 import { IconArrowRight } from './Icons';
@@ -28,7 +28,7 @@ export default function Categories() {
         <motion.div
           className="categories__grid"
           variants={containerVariants}
-          initial="hidden"
+          initial={INITIAL_HIDDEN}
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
         >

@@ -6,7 +6,7 @@ import {
   countByCategory,
   type Category,
 } from '../data/products';
-import { containerVariants, cardVariants, EASINGS } from '../utils/easings';
+import { containerVariants, cardVariants, EASINGS, INITIAL_HIDDEN } from '../utils/easings';
 import RevealText from './RevealText';
 import ProductCard from './ProductCard';
 
@@ -83,7 +83,7 @@ export default function Catalog() {
         <motion.div
           className="catalog__grid"
           variants={containerVariants}
-          initial="hidden"
+          initial={INITIAL_HIDDEN}
           whileInView="visible"
           viewport={{ once: true, amount: 0.05 }}
         >

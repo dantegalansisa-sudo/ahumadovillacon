@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { LEGAL, PENDING } from '../data/business';
 import { CATEGORIES, PRODUCTS, SALAMI_BRANDS } from '../data/products';
-import { EASINGS } from '../utils/easings';
+import { EASINGS, INITIAL_HIDDEN } from '../utils/easings';
 import { useParallax } from '../hooks/useParallax';
 import RevealText from './RevealText';
 import AnimatedCounter from './AnimatedCounter';
@@ -71,7 +71,7 @@ export default function About() {
         <motion.div
           className="about__media"
           ref={ref}
-          initial="hidden"
+          initial={INITIAL_HIDDEN}
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >

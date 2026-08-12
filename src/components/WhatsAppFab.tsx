@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { IS_SERVER } from '../utils/easings';
 import { WA_GENERAL } from '../utils/whatsapp';
 import { useOrderList } from '../hooks/useOrderList';
 import { IconWhatsApp } from './Icons';
@@ -18,7 +19,7 @@ export default function WhatsAppFab() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escríbenos por WhatsApp"
-      initial={{ scale: 0, opacity: 0 }}
+      initial={IS_SERVER ? false : { scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ type: 'spring', stiffness: 260, damping: 18, delay: 1.2 }}
     >

@@ -1,5 +1,5 @@
 import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { MotionConfig } from 'framer-motion';
@@ -9,7 +9,9 @@ import './styles/tokens.css';
 import './styles/base.css';
 import './styles/components.css';
 
-createRoot(document.getElementById('root')!).render(
+const container = document.getElementById('root')!;
+
+const tree = (
   <StrictMode>
     <HelmetProvider>
       {/* reducedMotion="user" drops every transform animation to an opacity
@@ -20,5 +22,13 @@ createRoot(document.getElementById('root')!).render(
         </BrowserRouter>
       </MotionConfig>
     </HelmetProvider>
-  </StrictMode>,
+  </StrictMode>
 );
+
+// The build prerenders every route, so in production there is markup to
+// hydrate. `npm run dev` serves the empty shell and takes the other branch.
+if (container.hasChildNodes()) {
+  hydrateRoot(container, tree);
+} else {
+  createRoot(container).render(tree);
+}

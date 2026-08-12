@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { containerVariants, cardVariants } from '../utils/easings';
+import { containerVariants, cardVariants, INITIAL_HIDDEN } from '../utils/easings';
 import RevealText from './RevealText';
 
 const STEPS = [
@@ -40,7 +40,7 @@ export default function HowToOrder() {
         <motion.ol
           className="how__grid"
           variants={containerVariants}
-          initial="hidden"
+          initial={INITIAL_HIDDEN}
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >

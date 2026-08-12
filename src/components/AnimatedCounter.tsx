@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'framer-motion';
+import { IS_SERVER } from '../utils/easings';
 
 interface AnimatedCounterProps {
   target: number;
@@ -36,10 +37,13 @@ export default function AnimatedCounter({
     return () => window.clearInterval(timer);
   }, [inView, target, duration]);
 
+  // The static HTML carries the final figure — "0 productos en catálogo" would
+  // be a poor thing for a crawler to read. suppressHydrationWarning covers the
+  // deliberate difference: in the browser the number counts up from zero.
   return (
-    <span ref={ref}>
+    <span ref={ref} suppressHydrationWarning>
       {prefix}
-      {count.toLocaleString('es-DO')}
+      {(IS_SERVER ? target : count).toLocaleString('es-DO')}
       {suffix}
     </span>
   );

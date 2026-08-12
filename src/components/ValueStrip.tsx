@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { containerVariants, cardVariants } from '../utils/easings';
+import { containerVariants, cardVariants, INITIAL_HIDDEN } from '../utils/easings';
 import { IconAward, IconChat, IconScale, IconSnow } from './Icons';
 
 const VALUES = [
@@ -31,7 +31,7 @@ export default function ValueStrip() {
       <motion.ul
         className="container value-strip__grid"
         variants={containerVariants}
-        initial="hidden"
+        initial={INITIAL_HIDDEN}
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >

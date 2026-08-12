@@ -1,5 +1,5 @@
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
-import { EASINGS } from '../utils/easings';
+import { EASINGS, INITIAL_HIDDEN } from '../utils/easings';
 
 type Tag = 'h1' | 'h2' | 'h3' | 'p' | 'span';
 
@@ -67,7 +67,7 @@ export default function RevealText({
       className={`reveal-text ${center ? 'reveal-text--center' : ''} ${className}`.trim()}
       aria-label={children}
       variants={container}
-      initial="hidden"
+      initial={INITIAL_HIDDEN}
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
     >

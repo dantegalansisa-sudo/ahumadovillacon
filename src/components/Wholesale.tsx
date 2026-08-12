@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { BUSINESS, HOURS_SHORT } from '../data/business';
 import { WA_WHOLESALE } from '../utils/whatsapp';
-import { containerVariants, cardVariants } from '../utils/easings';
+import { containerVariants, cardVariants, INITIAL_HIDDEN } from '../utils/easings';
 import RevealText from './RevealText';
 import MagneticButton from './MagneticButton';
 import { IconCheck, IconClock, IconWhatsApp } from './Icons';
@@ -41,7 +41,7 @@ export default function Wholesale() {
           <motion.ul
             className="wholesale__list"
             variants={containerVariants}
-            initial="hidden"
+            initial={INITIAL_HIDDEN}
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
