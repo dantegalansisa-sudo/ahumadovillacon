@@ -1,4 +1,4 @@
-import { BUSINESS } from './business';
+import { BUSINESS, NEARBY_AREAS } from './business';
 import { SALAMI_BRANDS } from './products';
 
 export interface FaqItem {
@@ -13,9 +13,9 @@ export interface FaqItem {
 export const FAQ: FaqItem[] = [
   {
     id: 'mayorista',
-    question: '¿Venden embutidos al por mayor en Santo Domingo?',
+    question: '¿Venden embutidos al por mayor en Villa Consuelo?',
     answer:
-      'Sí. Trabajamos al por mayor con colmados, cafeterías, restaurantes, hoteles, food trucks y catering en todo Santo Domingo, y también vendemos al detalle por libra para el hogar. Escríbenos por WhatsApp al ' +
+      'Sí. Trabajamos al por mayor con los colmados, cafeterías y restaurantes de Villa Consuelo y los barrios vecinos, y también vendemos al detalle por libra para el hogar. Escríbenos por WhatsApp al ' +
       BUSINESS.whatsappDisplay +
       ' con la lista de lo que necesitas.',
   },
@@ -43,6 +43,19 @@ export const FAQ: FaqItem[] = [
     question: '¿Hacen entregas a colmados y restaurantes?',
     answer:
       'Sí, hay entrega disponible. Coordinamos el envío por WhatsApp al confirmar el pedido; escríbenos con tu ubicación y te decimos cómo lo manejamos.',
+  },
+  {
+    id: 'donde-estan',
+    question: '¿Dónde están ubicados en Santo Domingo?',
+    answer: `Estamos en ${BUSINESS.address}, Santo Domingo, Distrito Nacional. En Google Maps aparecemos como ${BUSINESS.mapsName}. Abrimos de lunes a sábado de 7:00 a.m. a 6:30 p.m. y los domingos de 7:00 a.m. a 5:00 p.m.`,
+  },
+  {
+    id: 'zona',
+    question: '¿A qué zonas llegan con la entrega?',
+    answer: `Trabajamos con la gente de la zona: estamos a minutos de ${NEARBY_AREAS.slice(
+      1,
+      6,
+    ).join(', ')} y los barrios vecinos del Distrito Nacional. Escríbenos por WhatsApp con tu ubicación y te confirmamos cómo te lo hacemos llegar.`,
   },
   {
     id: 'como-pedir',

@@ -53,18 +53,20 @@ export default function Hero() {
         style={reduceMotion ? undefined : { opacity: contentOpacity, y: contentY }}
       >
         <div className="hero__copy">
+          {/* The h1 carries the term people actually search. The brand line
+              moved to the subline so the page still opens with a promise. */}
           <span className="eyebrow hero__eyebrow">
-            Embutidos y quesos &middot; Al por mayor y al detalle
+            Al por mayor y al detalle &middot; Villa Consuelo
           </span>
 
           <RevealText tag="h1" className="hero__title">
-            Sabor ahumado que tu negocio necesita
+            Embutidos y quesos en Villa Consuelo
           </RevealText>
 
           <p className="hero__subline">
-            Salamis, jamones, salchichas, longanizas y quesos de las mejores marcas
-            del país. Servimos colmados, cafeterías y restaurantes en todo Santo
-            Domingo.
+            Sabor ahumado que tu negocio necesita. Salamis, jamones, salchichas,
+            longanizas y quesos de las mejores marcas, en el corazón de Villa
+            Consuelo, Santo Domingo.
           </p>
 
           <div className="hero__actions">

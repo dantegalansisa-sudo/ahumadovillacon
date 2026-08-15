@@ -1110,6 +1110,21 @@
   color: var(--ember);
 }
 
+.visit__areas {
+  margin-top: 32px;
+  padding: 20px 22px;
+  background: var(--cream-deep);
+  border-left: 3px solid var(--ember);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.visit__areas p {
+  margin-top: 6px;
+  font-size: var(--fs-small);
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
 .visit__cta {
   margin-top: 38px;
 }

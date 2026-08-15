@@ -15,9 +15,9 @@ import FinalCta from '../components/FinalCta';
 import Footer from '../components/Footer';
 import WhatsAppFab from '../components/WhatsAppFab';
 
-const TITLE = 'Ahumados Villacon | Embutidos al por mayor y detalle — Santo Domingo';
+const TITLE = 'Embutidos y quesos en Villa Consuelo | Ahumados Villacon';
 const DESCRIPTION =
-  'Salamis, jamones, salchichas, longanizas, quesos y tocineta de las mejores marcas. Venta al por mayor y al detalle en el Mercado de Villa Consuelo, Santo Domingo. Sin pedido mínimo. Pide por WhatsApp.';
+  'Salamis, jamones, salchichas, longanizas y quesos en Villa Consuelo, Santo Domingo. Al por mayor y al detalle, sin pedido mínimo, con entrega en la zona. Pide por WhatsApp al 849-352-9892.';
 
 export default function Home() {
   return (

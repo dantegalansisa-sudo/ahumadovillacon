@@ -85,6 +85,31 @@ export function isPending(value: string): boolean {
   return value.includes('{{PENDIENTE}}');
 }
 
+/**
+ * Coordinates of Calle Manuela Díez in Villa Consuelo, from OpenStreetMap.
+ * Street level, not the doorway — enough for the local schema, which Google
+ * treats as a hint alongside the Business Profile.
+ */
+export const GEO = { lat: 18.4914739, lng: -69.8896729 } as const;
+
+/**
+ * Neighbourhoods around the shop. The client sells to the people nearby, not
+ * to the whole city, so these are what the copy and the schema name. Framed as
+ * "we are minutes away" — never as a delivery promise, which is unconfirmed.
+ */
+export const NEARBY_AREAS = [
+  'Villa Consuelo',
+  'Villa Juana',
+  'Ensanche Espaillat',
+  'Mejoramiento Social',
+  'María Auxiliadora',
+  'Villas Agrícolas',
+  'San Carlos',
+  'Ensanche Luperón',
+  'Cristo Rey',
+  '24 de Abril',
+] as const;
+
 /** Root-relative so the nav also works from the category routes. */
 export const NAV = [
   { label: 'Inicio', href: '/#inicio' },

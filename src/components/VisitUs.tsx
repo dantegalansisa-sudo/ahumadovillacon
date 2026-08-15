@@ -1,4 +1,4 @@
-import { BUSINESS, HOURS, isPending } from '../data/business';
+import { BUSINESS, HOURS, NEARBY_AREAS, isPending } from '../data/business';
 import { WA_GENERAL } from '../utils/whatsapp';
 import RevealText from './RevealText';
 import { IconClock, IconPhone, IconPin, IconWhatsApp } from './Icons';
@@ -79,6 +79,18 @@ export default function VisitUs() {
               </span>
             </li>
           </ul>
+
+          {/* Naming the surrounding barrios is the strongest local signal the
+              page can carry, and it answers the real question a neighbour has:
+              "¿me queda cerca?". Phrased as distance, not as coverage. */}
+          <div className="visit__areas">
+            <strong className="visit__label">Estamos cerca de ti</strong>
+            <p>
+              A minutos de {NEARBY_AREAS.slice(1, -1).join(', ')} y{' '}
+              {NEARBY_AREAS[NEARBY_AREAS.length - 1]}. Si estás por la zona, pasa
+              por el negocio o coordina la entrega por WhatsApp.
+            </p>
+          </div>
 
           <a
             className="btn btn--primary visit__cta"

@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { BUSINESS, HOURS, LEGAL, isPending } from '../data/business';
+import { BUSINESS, GEO, HOURS, LEGAL, NEARBY_AREAS, isPending } from '../data/business';
 import { absoluteUrl, ogImageUrl } from '../utils/schema';
 
 interface SeoProps {
@@ -30,7 +30,18 @@ export default function Seo({
     description,
     // Landline first so it matches the number on the Google listing.
     telephone: [BUSINESS.landlineE164, BUSINESS.phoneE164],
-    areaServed: 'Santo Domingo, República Dominicana',
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: GEO.lat,
+      longitude: GEO.lng,
+    },
+    hasMap: BUSINESS.mapLinkUrl,
+    // The barrios around the shop, not the whole city: the client sells to
+    // whoever is close enough to walk in or take a short delivery.
+    areaServed: NEARBY_AREAS.map((name) => ({
+      '@type': 'Place',
+      name: `${name}, Santo Domingo`,
+    })),
     currenciesAccepted: 'DOP',
     founder: { '@type': 'Person', name: LEGAL.owner },
     openingHoursSpecification: HOURS.map((block) => ({
@@ -47,9 +58,9 @@ export default function Seo({
     store['@id'] = siteUrl;
     store.url = siteUrl;
   }
-  if (ogImage) {
-    store.image = ogImage;
-  }
+  // A local listing without an image is weaker; the hero photo stands in
+  // until og-image.jpg exists.
+  store.image = ogImage ?? absoluteUrl('/images/hero.webp');
   // A PostalAddress with placeholder fields would be worse than none.
   if (!isPending(BUSINESS.address)) {
     store.address = {
