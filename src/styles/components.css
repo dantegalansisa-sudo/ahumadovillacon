@@ -526,14 +526,14 @@
 
 /* The spans live on the grid's direct children (the motion wrappers); the card
    itself fills whatever cell it lands in. */
+/* Siete tarjetas: tres arriba y cuatro abajo, sin dejar ninguna huérfana. */
 .categories__grid > * {
   grid-column: span 3;
   display: flex;
 }
 
-.categories__grid > *:nth-child(1),
-.categories__grid > *:nth-child(2) {
-  grid-column: span 6;
+.categories__grid > *:nth-child(-n + 3) {
+  grid-column: span 4;
 }
 
 .category-card {

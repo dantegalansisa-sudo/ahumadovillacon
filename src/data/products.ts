@@ -15,10 +15,11 @@ export type Category =
   | 'salchichas'
   | 'longanizas'
   | 'quesos'
-  | 'especialidades';
+  | 'especialidades'
+  | 'otros';
 
 /** How the product is sold. Drives the quantity wording in the order list. */
-export type Unit = 'libra' | 'unidad' | 'paquete' | 'lata';
+export type Unit = 'libra' | 'unidad' | 'paquete' | 'lata' | 'saco';
 
 export interface Product {
   slug: string;
@@ -51,6 +52,7 @@ export const UNIT_LABEL: Record<Unit, { one: string; many: string }> = {
   unidad: { one: 'unidad', many: 'unidades' },
   paquete: { one: 'paquete', many: 'paquetes' },
   lata: { one: 'lata', many: 'latas' },
+  saco: { one: 'saco', many: 'sacos' },
 };
 
 export function formatQty(qty: number, unit: Unit): string {
@@ -175,6 +177,22 @@ export const CATEGORIES: CategoryMeta[] = [
       ORDER_LINE,
     ],
     gridHeading: "Nuestras especialidades",
+  },
+  {
+    id: 'otros',
+    label: 'Otros productos',
+    chipLabel: 'Otros',
+    blurb: 'Harina, mantequilla, yogurt y masa para empanadas. Lo que completa el pedido.',
+    image: '/categories/otros.webp',
+    h1: 'Harina, mantequilla y lácteos al por mayor',
+    metaTitle: 'Harina, mantequilla y lácteos al por mayor | Ahumados Villacon',
+    metaDescription:
+      'Harina de trigo por saco, mantequilla, yogurt y masa para empanadas. Al por mayor y al detalle en el Mercado de Villa Consuelo, Santo Domingo.',
+    intro: [
+      'Además de los embutidos y los quesos manejamos lo que el colmado y la cafetería piden en el mismo pedido: harina de trigo por saco, mantequilla, yogurt y masa para empanadas.',
+      ORDER_LINE,
+    ],
+    gridHeading: 'Otros productos que manejamos',
   },
 ];
 
@@ -399,6 +417,25 @@ export const PRODUCTS: Product[] = [
     hasPhoto: true,
   },
 
+  {
+    slug: 'mortadela-criolisimo',
+    name: 'Mortadela Criolísimo',
+    ref: 'MORTADELA CRIOLISIMO',
+    category: 'jamones',
+    description: 'Mortadela cocida grado estándar, marca Criolísimo.',
+    unit: 'libra',
+    hasPhoto: true,
+  },
+  {
+    slug: 'mortadela-agrofem',
+    name: 'Mortadela Agrofem',
+    ref: 'MORTADELA AGROFEM',
+    category: 'jamones',
+    description: 'Mortadela especial, marca Agrofem.',
+    unit: 'libra',
+    hasPhoto: true,
+  },
+
   // SALCHICHAS (5)
   {
     slug: 'salchicha-chef-hot-dog-superior',
@@ -442,6 +479,16 @@ export const PRODUCTS: Product[] = [
     ref: 'SALCHICHA PIGGY LINKS PREMIUM CHEF',
     category: 'salchichas',
     description: 'Salchicha premium tipo links, por paquete.',
+    unit: 'paquete',
+    hasPhoto: true,
+  },
+
+  {
+    slug: 'salchicha-ranchera-chef',
+    name: 'Salchicha Ranchera Chef',
+    ref: 'SALCHICHA RANCHERA CHEF',
+    category: 'salchichas',
+    description: 'Salchicha hot dog ranchera, paquete de 36 unidades.',
     unit: 'paquete',
     hasPhoto: true,
   },
@@ -560,12 +607,97 @@ export const PRODUCTS: Product[] = [
     hasPhoto: true,
   },
   {
+    slug: 'queso-tipo-holandes-dorio',
+    name: 'Queso Tipo Holandés Dorio',
+    ref: 'QUESO TIPO HOLANDES DORIO',
+    category: 'quesos',
+    description: 'Queso tipo holandés, marca Dorio. Venta por libra.',
+    unit: 'libra',
+    hasPhoto: true,
+  },
+  {
+    slug: 'queso-bocatel',
+    name: 'Queso Bocatel',
+    ref: 'QUESO BOCATEL',
+    category: 'quesos',
+    description: 'Queso marca Bocatel. Venta por libra.',
+    unit: 'libra',
+    hasPhoto: true,
+  },
+  {
+    slug: 'queso-mozzarella-rallado',
+    name: 'Queso Mozzarella Rallado',
+    ref: 'QUESO MOZZARELLA RALLADO',
+    category: 'quesos',
+    description: 'Mozzarella rallada en bolsa, para pizzería.',
+    unit: 'paquete',
+    hasPhoto: true,
+  },
+  {
     slug: 'queso-yaquelin',
     name: 'Queso Yaquelin',
     ref: 'QUESO YAQUELIN',
     category: 'quesos',
     description: 'Queso marca Yaquelin.',
     unit: 'libra',
+    hasPhoto: true,
+  },
+
+  // OTROS PRODUCTOS (6)
+  // Fuera de la línea de embutidos, pero el cliente los vende y entran en el
+  // mismo pedido del colmado.
+  {
+    slug: 'harina-de-trigo-ozama',
+    name: 'Harina de Trigo Ozama Especial',
+    ref: 'HARINA DE TRIGO OZAMA ESPECIAL',
+    category: 'otros',
+    description: 'Harina de trigo de primera, saco de 20 libras.',
+    unit: 'saco',
+    hasPhoto: true,
+  },
+  {
+    slug: 'mantequilla-rica-pote',
+    name: 'Mantequilla Rica',
+    ref: 'MANTEQUILLA RICA',
+    category: 'otros',
+    description: 'Mantequilla en pote, marca Rica.',
+    unit: 'unidad',
+    hasPhoto: true,
+  },
+  {
+    slug: 'mantequilla-rica-con-sal',
+    name: 'Mantequilla Rica con Sal',
+    ref: 'MANTEQUILLA RICA CON SAL',
+    category: 'otros',
+    description: 'Mantequilla con sal en barra, marca Rica.',
+    unit: 'unidad',
+    hasPhoto: true,
+  },
+  {
+    slug: 'untable-rica',
+    name: 'Untable Rica',
+    ref: 'UNTABLE RICA',
+    category: 'otros',
+    description: 'Untable en pote, marca Rica.',
+    unit: 'unidad',
+    hasPhoto: true,
+  },
+  {
+    slug: 'yogurt-rica-fresa',
+    name: 'Yogurt Rica de Fresa',
+    ref: 'YOGURT RICA FRESA',
+    category: 'otros',
+    description: 'Yogurt bebible de fresa, marca Rica.',
+    unit: 'unidad',
+    hasPhoto: true,
+  },
+  {
+    slug: 'masa-para-empanadas-alvin',
+    name: 'Masa para Empanadas Alvin',
+    ref: 'MASA PARA EMPANADAS ALVIN',
+    category: 'otros',
+    description: 'Masa para empanadas y pastelitos, marca Alvin.',
+    unit: 'paquete',
     hasPhoto: true,
   },
 
@@ -611,6 +743,7 @@ export const CATEGORY_LABEL: Record<Category, string> = {
   longanizas: 'Longanizas',
   quesos: 'Quesos',
   especialidades: 'Especialidades',
+  otros: 'Otros productos',
 };
 
 export function countByCategory(id: Category): number {

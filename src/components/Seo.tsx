@@ -56,6 +56,7 @@ export default function Seo({
       streetAddress: BUSINESS.address,
       addressLocality: BUSINESS.addressLocality,
       addressRegion: BUSINESS.addressRegion,
+      postalCode: BUSINESS.postalCode,
       addressCountry: BUSINESS.country,
     };
   }

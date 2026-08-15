@@ -12,8 +12,8 @@ export const PENDING = '{{PENDIENTE}}';
  * shop, and is deliberately kept out of the site and out of this repository.
  * Still missing: the stall / local number inside the market.
  */
-const ADDRESS = 'Mercado de Villa Consuelo';
-const MAP_QUERY = `${ADDRESS}, Santo Domingo, Distrito Nacional, República Dominicana`;
+const ADDRESS = 'Calle Manuela Diez 230-228, Villa Consuelo';
+const MAP_QUERY = `${ADDRESS}, Santo Domingo 10308, República Dominicana`;
 
 export const BUSINESS = {
   name: 'Ahumados Villacon',
@@ -24,6 +24,7 @@ export const BUSINESS = {
   address: ADDRESS,
   addressLocality: 'Santo Domingo',
   addressRegion: 'Distrito Nacional',
+  postalCode: '10308',
   country: 'DO',
   email: PENDING,
   instagram: PENDING,

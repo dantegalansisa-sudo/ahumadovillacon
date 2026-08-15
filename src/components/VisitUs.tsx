@@ -28,7 +28,8 @@ export default function VisitUs() {
                 <strong className="visit__label">Dirección</strong>
                 <span className="visit__value">{BUSINESS.address}</span>
                 <span className="visit__value muted">
-                  {BUSINESS.addressLocality}, {BUSINESS.addressRegion}
+                  {BUSINESS.addressLocality}, {BUSINESS.addressRegion}{' '}
+                  {BUSINESS.postalCode}
                 </span>
                 <a
                   className="visit__maplink"

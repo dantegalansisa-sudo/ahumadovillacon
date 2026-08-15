@@ -81,6 +81,44 @@ const MAP = {
   'quesos/QUESO GOUDA BUNWO.png': 'queso-gouda-bunwo',
   'quesos/QUESO MOZARELA.png': 'queso-mozzarella',
   'quesos/QUESO YAQUELIN.png': 'queso-yaquelin',
+
+  /**
+   * Batch the client sent on 15 Aug because several photos on the site did not
+   * match the product he actually sells. These are shot on a plain background
+   * and win over what was there. Entries that repeat a slug above override it,
+   * since object keys are applied in order.
+   *
+   * Left out on purpose: the shots of the whole display case, the mixed piles
+   * of product, and the opened ham and bacon cuts. The client flagged those as
+   * unappealing and he is right — they do not read as a catalog photo.
+   */
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.23 PM (1).jpeg': 'queso-tipo-holandes-dorio',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.23 PM (3).jpeg': 'salami-naranjal-latino',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.23 PM (5).jpeg': 'jamon-cocido-corriente',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.23 PM (7).jpeg': 'salchicha-piggy-links-premium-chef',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.23 PM.jpeg': 'jamoneta-mortadela-la-moyeta',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.24 PM (1).jpeg': 'salami-induveca-super-especial',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.24 PM (2).jpeg': 'mortadela-criolisimo',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.24 PM (5).jpeg': 'salchicha-hot-dog',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.24 PM (6).jpeg': 'salami-tolentino-ahumado',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.24 PM (9).jpeg': 'jamoneta-de-pollo-ducarnes',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.24 PM.jpeg': 'queso-blanco-de-freir',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.25 PM (1).jpeg': 'salchicha-ranchera-chef',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.25 PM (2).jpeg': 'jamon-picnic-del-cerro',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.25 PM (3).jpeg': 'queso-amarillo-cheddar',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.25 PM (5).jpeg': 'mortadela-agrofem',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.25 PM.jpeg': 'salami-estelar',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.40 PM (1).jpeg': 'queso-mozzarella-rallado',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.40 PM (2).jpeg': 'harina-de-trigo-ozama',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.40 PM (3).jpeg': 'mantequilla-rica-pote',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.40 PM (5).jpeg': 'mantequilla-rica-con-sal',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.40 PM (6).jpeg': 'queso-mozzarella',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.41 PM (4).jpeg': 'masa-para-empanadas-alvin',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.41 PM (8).jpeg': 'queso-bocatel',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.42 PM (4).jpeg': 'salami-prado-campo-fino',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.42 PM (6).jpeg': 'jamon-picnic-cocido',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.42 PM (7).jpeg': 'yogurt-rica-fresa',
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.43 PM.jpeg': 'untable-rica',
 };
 
 /**
@@ -101,6 +139,9 @@ const COVERS = {
   // 'SALCHICHA PORTADA.png' (234x132) was replaced by this larger one.
   'PORTADA/salchicha portada 1.png': 'salchichas',
   'PORTADA/TOCINETA PORTADA.png': 'especialidades',
+  // El saco de harina se lee de lejos; la mantequilla sobre fondo blanco
+  // dejaba la tarjeta casi vacía.
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.40 PM (2).jpeg': 'otros',
 };
 
 const COVER_DIR = path.join(ROOT, 'public', 'categories');

@@ -31,6 +31,7 @@ const ROUTES = [
   '/productos/longanizas',
   '/productos/quesos',
   '/productos/especialidades',
+  '/productos/otros',
 ];
 
 let smallest = Infinity;
