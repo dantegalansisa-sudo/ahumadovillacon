@@ -11,7 +11,7 @@ import {
 import { CATEGORIES } from '../data/products';
 import { WA_GENERAL } from '../utils/whatsapp';
 import Wordmark from './Wordmark';
-import { IconFacebook, IconInstagram, IconPin, IconWhatsApp } from './Icons';
+import { IconFacebook, IconInstagram, IconPhone, IconPin, IconWhatsApp } from './Icons';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -57,6 +57,12 @@ export default function Footer() {
               <a href={WA_GENERAL} target="_blank" rel="noopener noreferrer">
                 <IconWhatsApp size={15} />
                 WhatsApp {BUSINESS.whatsappDisplay}
+              </a>
+            </li>
+            <li>
+              <a href={`tel:${BUSINESS.landlineE164}`}>
+                <IconPhone size={15} />
+                Tel. {BUSINESS.landlineDisplay}
               </a>
             </li>
             <li>

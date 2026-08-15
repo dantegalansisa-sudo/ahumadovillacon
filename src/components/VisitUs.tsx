@@ -16,7 +16,7 @@ export default function VisitUs() {
         <div className="visit__copy">
           <span className="eyebrow">Visítanos</span>
           <RevealText tag="h2" id="visitanos-title">
-            Estamos en el Mercado de Villa Consuelo
+            Estamos en Villa Consuelo
           </RevealText>
 
           <ul className="visit__list">
@@ -30,6 +30,11 @@ export default function VisitUs() {
                 <span className="visit__value muted">
                   {BUSINESS.addressLocality}, {BUSINESS.addressRegion}{' '}
                   {BUSINESS.postalCode}
+                </span>
+                {/* The Maps listing carries a different name; saying so here
+                    saves the trip of looking for one that does not exist. */}
+                <span className="visit__value muted">
+                  En Google Maps aparecemos como {BUSINESS.mapsName}
                 </span>
                 <a
                   className="visit__maplink"
@@ -64,6 +69,12 @@ export default function VisitUs() {
                 <strong className="visit__label">Teléfono y WhatsApp</strong>
                 <a className="visit__value visit__phone" href={`tel:${BUSINESS.phoneE164}`}>
                   {BUSINESS.whatsappDisplay}
+                </a>
+                <a
+                  className="visit__value visit__phone-alt"
+                  href={`tel:${BUSINESS.landlineE164}`}
+                >
+                  {BUSINESS.landlineDisplay}
                 </a>
               </span>
             </li>

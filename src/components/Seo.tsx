@@ -26,9 +26,10 @@ export default function Seo({
     '@context': 'https://schema.org',
     '@type': 'Store',
     name: BUSINESS.name,
-    alternateName: 'Ahumados Villa Consuelo',
+    alternateName: ['Ahumados Villa Consuelo', BUSINESS.mapsName],
     description,
-    telephone: BUSINESS.phoneE164,
+    // Landline first so it matches the number on the Google listing.
+    telephone: [BUSINESS.landlineE164, BUSINESS.phoneE164],
     areaServed: 'Santo Domingo, República Dominicana',
     currenciesAccepted: 'DOP',
     founder: { '@type': 'Person', name: LEGAL.owner },

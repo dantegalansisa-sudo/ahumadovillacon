@@ -21,6 +21,11 @@ export const BUSINESS = {
   whatsapp: '18493529892',
   whatsappDisplay: '(849) 352-9892',
   phoneE164: '+18493529892',
+  // Landline from the Google listing. Every WhatsApp CTA keeps using the 849.
+  landlineDisplay: '(829) 909-0000',
+  landlineE164: '+18299090000',
+  /** How the business is listed on Google Maps, which is how people find it. */
+  mapsName: 'Embutidos Villa Consuelo',
   address: ADDRESS,
   addressLocality: 'Santo Domingo',
   addressRegion: 'Distrito Nacional',
