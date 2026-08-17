@@ -157,7 +157,7 @@ export const CATEGORIES: CategoryMeta[] = [
     metaDescription:
       'Queso amarillo cheddar, blanco de freír, gouda, danés y mozzarella. Al por mayor y al detalle en el Mercado de Villa Consuelo. Pide por WhatsApp.',
     intro: [
-      'Diez quesos en catálogo: amarillo cheddar, blanco de freír, gouda, danés, mozzarella y las marcas de la casa, por libra, por unidad o en lata.',
+      'Amarillo cheddar, blanco de freír, gouda, danés, mozzarella y las marcas de la casa, por libra, por unidad o en lata.',
       ORDER_LINE,
     ],
     gridHeading: 'Todos nuestros quesos',
@@ -182,14 +182,14 @@ export const CATEGORIES: CategoryMeta[] = [
     id: 'otros',
     label: 'Otros productos',
     chipLabel: 'Otros',
-    blurb: 'Harina, mantequilla, yogurt y masa para empanadas. Lo que completa el pedido.',
+    blurb: 'Harina, papas, mantequilla, yogurt y masa para empanadas. Lo que completa el pedido.',
     image: '/categories/otros.webp',
-    h1: 'Harina, mantequilla y lácteos al por mayor',
-    metaTitle: 'Harina, mantequilla y lácteos al por mayor | Ahumados Villacon',
+    h1: 'Harina, papas, mantequilla y lácteos al por mayor',
+    metaTitle: 'Harina, papas y lácteos al por mayor | Ahumados Villacon',
     metaDescription:
-      'Harina de trigo por saco, mantequilla, yogurt y masa para empanadas. Al por mayor y al detalle en el Mercado de Villa Consuelo, Santo Domingo.',
+      'Harina de trigo por saco, papas en tiras, mantequilla, yogurt y masa para empanadas. Al por mayor y al detalle en el Mercado de Villa Consuelo, Santo Domingo.',
     intro: [
-      'Además de los embutidos y los quesos manejamos lo que el colmado y la cafetería piden en el mismo pedido: harina de trigo por saco, mantequilla, yogurt y masa para empanadas.',
+      'Además de los embutidos y los quesos manejamos lo que el colmado y la cafetería piden en el mismo pedido: harina de trigo por saco, papas en tiras, mantequilla, yogurt y masa para empanadas.',
       ORDER_LINE,
     ],
     gridHeading: 'Otros productos que manejamos',
@@ -625,15 +625,6 @@ export const PRODUCTS: Product[] = [
     hasPhoto: true,
   },
   {
-    slug: 'queso-mozzarella-rallado',
-    name: 'Queso Mozzarella Rallado',
-    ref: 'QUESO MOZZARELLA RALLADO',
-    category: 'quesos',
-    description: 'Mozzarella rallada en bolsa, para pizzería.',
-    unit: 'paquete',
-    hasPhoto: true,
-  },
-  {
     slug: 'queso-yaquelin',
     name: 'Queso Yaquelin',
     ref: 'QUESO YAQUELIN',
@@ -643,9 +634,18 @@ export const PRODUCTS: Product[] = [
     hasPhoto: true,
   },
 
-  // OTROS PRODUCTOS (6)
+  // OTROS PRODUCTOS (7)
   // Fuera de la línea de embutidos, pero el cliente los vende y entran en el
   // mismo pedido del colmado.
+  {
+    slug: 'papas-rayadas-prima',
+    name: 'Papas Rayadas Prima',
+    ref: 'PAPAS RAYADAS PRIMA',
+    category: 'otros',
+    description: 'Papas en tiras marca Prima, en bolsa.',
+    unit: 'paquete',
+    hasPhoto: true,
+  },
   {
     slug: 'harina-de-trigo-ozama',
     name: 'Harina de Trigo Ozama Especial',

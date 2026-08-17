@@ -108,7 +108,8 @@ const MAP = {
   'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.25 PM (3).jpeg': 'queso-amarillo-cheddar',
   'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.25 PM (5).jpeg': 'mortadela-agrofem',
   'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.25 PM.jpeg': 'salami-estelar',
-  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.40 PM (1).jpeg': 'queso-mozzarella-rallado',
+  // La bolsa naranja marca Prima trae papas en tiras, no queso rallado.
+  'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.40 PM (1).jpeg': 'papas-rayadas-prima',
   'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.40 PM (2).jpeg': 'harina-de-trigo-ozama',
   'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.40 PM (3).jpeg': 'mantequilla-rica-pote',
   'IMAGENES NUEVAS  MIXTAS/WhatsApp Image 2026-08-15 at 12.20.40 PM (5).jpeg': 'mantequilla-rica-con-sal',
