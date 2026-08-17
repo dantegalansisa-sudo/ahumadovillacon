@@ -135,6 +135,11 @@ se quedan versionados para poder regenerar a otro tamaño cuando haga falta.
   paths con punto para que `robots.txt` y `sitemap.xml` se sigan sirviendo tal cual.
   El esquema de Vercel rechaza cualquier clave que no reconozca dentro de `rewrites`
   (incluida una llamada `comment`), así que ese archivo no admite notas: van aquí.
+- Todos los mensajes de WhatsApp salen de `src/utils/whatsapp.ts` y cierran con la misma
+  línea: "Vengo de la página web: https://www.ahumadosvillacon.com". Es la única forma que
+  tiene el cliente de saber si un mensaje vino del sitio o de otro lado, y de paso el enlace
+  queda tocable en el chat. Va en `waLinkWithMessage`, así que cualquier mensaje nuevo la
+  hereda solo.
 - El mapa usa el embed de Google Maps sin API key (`maps?q=...&output=embed`). Si algún día
   deja de resolver, se cambia por Maps Embed API con key en `business.ts`.
 - Los `<title>` y `<meta>` estáticos de `index.html` llevan `data-rh="true"` a propósito:
