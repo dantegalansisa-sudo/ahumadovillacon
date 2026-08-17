@@ -1,7 +1,5 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { CATEGORIES, PRODUCTS, type Category } from '../data/products';
-import { containerVariants, cardVariants, INITIAL_HIDDEN } from '../utils/easings';
 import { breadcrumbSchema, itemListSchema } from '../utils/schema';
 import { WA_GENERAL } from '../utils/whatsapp';
 import Seo from '../components/Seo';
@@ -11,11 +9,9 @@ import WhatsAppFab from '../components/WhatsAppFab';
 import Breadcrumbs from '../components/Breadcrumbs';
 import RevealText from '../components/RevealText';
 import MagneticButton from '../components/MagneticButton';
-import ProductCard from '../components/ProductCard';
+import CategoryGrid from '../components/CategoryGrid';
 import FinalCta from '../components/FinalCta';
 import { IconArrowRight, IconWhatsApp } from '../components/Icons';
-
-const EAGER_COUNT = 4;
 
 /**
  * Phase 2 route: /productos/:categoria — one indexable page per family, each
@@ -102,19 +98,7 @@ export default function CategoryPage() {
               </RevealText>
             </div>
 
-            <motion.div
-              className="catalog__grid"
-              variants={containerVariants}
-              initial={INITIAL_HIDDEN}
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.05 }}
-            >
-              {products.map((product, index) => (
-                <motion.div key={product.slug} variants={cardVariants}>
-                  <ProductCard product={product} eager={index < EAGER_COUNT} />
-                </motion.div>
-              ))}
-            </motion.div>
+            <CategoryGrid products={products} label={meta.label} />
           </div>
         </section>
 

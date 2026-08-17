@@ -44,6 +44,17 @@ export const WA_GENERAL = waLinkWithMessage(
   `Hola ${BUSINESS.name}, quiero hacer un pedido. ¿Me pueden ayudar?`,
 );
 
+/**
+ * A search that found nothing. Turning the dead end into a question is the
+ * point: the visitor still gets an answer, and the client finds out what he is
+ * being asked for that he does not list.
+ */
+export function waMissingProduct(query: string): string {
+  return waLinkWithMessage(
+    `Hola ${BUSINESS.name}, busqué "${query.trim()}" en la página y no lo encontré. ¿Lo tienen disponible?`,
+  );
+}
+
 /** B2B enquiry — wholesale section. */
 export const WA_WHOLESALE = waLinkWithMessage(
   `Hola ${BUSINESS.name}, soy un negocio y quiero cotizar al por mayor.`,

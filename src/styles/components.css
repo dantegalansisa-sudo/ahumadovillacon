@@ -219,8 +219,187 @@
   width: 100%;
 }
 
+/* The right column holds the links and, pushed to the far edge, the search
+   toggle. Both side columns stay 1fr, so the wordmark is still centred. */
+.header__end {
+  grid-column: 3;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
 .header__burger {
   display: none;
+}
+
+/* ---- Header search ---- */
+
+.header-search {
+  margin-left: auto;
+}
+
+.header-search__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  color: var(--ink);
+  transition:
+    background-color 0.25s var(--ease-snappy),
+    color 0.25s var(--ease-snappy);
+}
+
+.header-search__toggle:hover,
+.header-search__toggle[aria-expanded='true'] {
+  background: var(--cream-deep);
+  color: var(--ember);
+}
+
+.header-search__panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 24px 0 28px;
+  background: var(--paper);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 24px 48px -28px rgba(28, 24, 21, 0.35);
+}
+
+.header-search__form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 6px 6px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--cream);
+}
+
+.header-search__form:focus-within {
+  border-color: var(--tan);
+}
+
+.header-search__form-icon {
+  flex: none;
+  color: var(--ink-muted);
+}
+
+.header-search__input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  color: var(--ink);
+}
+
+.header-search__input:focus {
+  outline: none;
+}
+
+.header-search__input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.header-search__submit {
+  flex: none;
+}
+
+.header-search__results {
+  margin-top: 18px;
+}
+
+.header-search__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px 20px;
+}
+
+.header-search__list button {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  text-align: left;
+  transition: background-color 0.2s var(--ease-snappy);
+}
+
+.header-search__list button:hover {
+  background: var(--cream-deep);
+}
+
+/* Many product photos sit on a white background that would dissolve into the
+   white panel; the hairline keeps every thumbnail reading as a tile. */
+.header-search__thumb {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--cream-deep);
+}
+
+.header-search__thumb img,
+.header-search__thumb .img-fallback {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.header-search__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.header-search__text strong {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.header-search__text span {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.header-search__all {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--ember);
+}
+
+.header-search__all:hover {
+  text-decoration: underline;
+}
+
+.header-search__none {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0 4px;
+}
+
+.header-search__none p {
+  color: var(--ink-soft);
 }
 
 /* Six links plus the wordmark stop fitting comfortably before the burger
@@ -676,6 +855,148 @@
 
 .chip.is-active .chip__count {
   color: var(--cream);
+}
+
+/* ---- Search box ---- */
+
+.searchbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Centred under the lead, matching the section head above it. */
+.catalog .section-head .searchbox {
+  max-width: 480px;
+  margin: 28px auto 0;
+}
+
+.searchbox__icon {
+  position: absolute;
+  left: 16px;
+  display: inline-flex;
+  color: var(--ink-muted);
+  pointer-events: none;
+}
+
+.searchbox__input {
+  width: 100%;
+  padding: 11px 40px 11px 44px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--paper);
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  color: var(--ink);
+  transition: border-color 0.25s var(--ease-snappy);
+}
+
+.searchbox__input::placeholder {
+  color: var(--ink-muted);
+}
+
+.searchbox__input:hover {
+  border-color: var(--tan);
+}
+
+.searchbox__input:focus {
+  outline: none;
+  border-color: var(--ember);
+}
+
+/* The native control is unstyleable and Firefox has none at all. */
+.searchbox__input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.searchbox__clear {
+  position: absolute;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  color: var(--ink-muted);
+  transition:
+    background-color 0.2s var(--ease-snappy),
+    color 0.2s var(--ease-snappy);
+}
+
+.searchbox__clear:hover {
+  background: var(--cream-deep);
+  color: var(--ink);
+}
+
+.catalog__count {
+  margin-bottom: 24px;
+  font-size: var(--fs-small);
+  color: var(--ink-muted);
+}
+
+.catalog__count strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.category__search {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.category__search .catalog__count {
+  margin-bottom: 0;
+}
+
+/* ---- No results ---- */
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 64px 24px 72px;
+  text-align: center;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.empty__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 4px;
+  border-radius: 999px;
+  background: var(--cream-deep);
+  color: var(--ink-muted);
+}
+
+.empty__title {
+  font-size: var(--fs-h3);
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.empty__hint {
+  max-width: 42ch;
+  color: var(--ink-soft);
+}
+
+.empty__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
 }
 
 .catalog__grid {
@@ -1897,6 +2218,7 @@ body.has-order-bar .footer__bottom {
     grid-template-columns: repeat(3, 1fr);
   }
 
+
   .categories__grid {
     grid-template-columns: repeat(6, 1fr);
   }
@@ -1979,6 +2301,35 @@ body.has-order-bar .footer__bottom {
   .catalog__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
+  }
+
+  .header-search__list {
+    grid-template-columns: 1fr;
+  }
+
+  .header-search__submit {
+    display: none;
+  }
+
+  .header-search__panel {
+    max-height: calc(100vh - var(--header-h-compact));
+    overflow-y: auto;
+  }
+
+  .category__search {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  /* Under 16px iOS Safari zooms the page the moment the field takes focus,
+     and the visitor lands in a catalog they now have to pinch back out of. */
+  .searchbox__input {
+    font-size: 1rem;
+  }
+
+  .empty {
+    padding: 44px 18px 48px;
   }
 
   .categories__grid {

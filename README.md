@@ -41,6 +41,39 @@ cuenta y cómo se escribe en el mensaje.
 número (DOP, por unidad de venta) aparece solo en la ficha, en el panel de la lista y en
 el mensaje de WhatsApp. No hay que tocar componentes.
 
+## Buscador
+
+`src/utils/search.ts`. Escrito a mano en vez de traer una librería: con 56 productos el
+escaneo no cuesta nada, y lo que hay que resolver aquí —cómo escribe la gente en el celular
+y los nombres del inventario del cliente— es justo lo que un matcher genérico no sabe.
+
+Cuatro pasadas, de la más exacta a la más suelta: nombre → resto del texto (descripción,
+categoría, unidad y el `ref` interno) → plural → distancia de edición. Resuelve `jamon`,
+`mozarela`, `longanisa`, `quesos`, `queso freir` e `induveca`.
+
+Dos decisiones que parecen detalles y no lo son:
+
+- Las descripciones **no** entran en la pasada difusa, solo en la de subcadena. `para`
+  está a una edición de `papa` y arrastraba nueve productos a una búsqueda de papas.
+  Hay además una lista corta de palabras vacías en `STOPWORDS`.
+- La coincidencia por raíz (la que hace que `pizza` llegue a `pizzería`) exige raíz exacta
+  hasta cuatro letras. Con una edición de margen, `chef` alcanza `cheddar` y `saco`
+  alcanza `salami`.
+
+El buscador del catálogo vive **fuera** de la barra pegajosa a propósito: compartiendo
+esa fila dejaba tres chips detrás de un scroll horizontal, y apilar ambos dentro ponía
+250px de mobiliario fijo sobre una pantalla de portátil. Cuando se va con el scroll, la
+lupa del header toma el relevo.
+
+`?q=` y `?cat=` en el home (`src/hooks/useCatalogQuery.ts`) sirven para mandar un anuncio
+directo a la vista ya filtrada. **Se leen en un `useEffect`, nunca durante el render:** el
+`/` prerenderizado se generó sin parámetros y leerlos en el primer render del cliente
+produciría un HTML distinto al que se está hidratando.
+
+Una búsqueda sin resultados no es un callejón sin salida — ofrece la pregunta ya escrita
+por WhatsApp (`waMissingProduct`). Es lo único que le dice al cliente qué le están pidiendo
+que no vende.
+
 ## Datos del negocio
 
 Todo vive en `src/data/business.ts` y se propaga solo al header, footer, Visítanos,

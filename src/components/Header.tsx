@@ -4,6 +4,7 @@ import { NAV } from '../data/business';
 import { useScrolled } from '../hooks/useScrolled';
 import Wordmark from './Wordmark';
 import MobileMenu from './MobileMenu';
+import HeaderSearch from './HeaderSearch';
 import { IconMenu } from './Icons';
 
 /**
@@ -49,15 +50,19 @@ export default function Header() {
             <Wordmark size="header" compact={scrolled} />
           </Link>
 
-          <nav className="header__nav header__nav--right" aria-label="Navegación secundaria">
-            <ul>
-              {rightLinks.map((link) => (
-                <li key={link.href}>
-                  <Link to={link.href}>{link.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <div className="header__end">
+            <nav className="header__nav header__nav--right" aria-label="Navegación secundaria">
+              <ul>
+                {rightLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link to={link.href}>{link.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <HeaderSearch />
+          </div>
         </div>
       </header>
 

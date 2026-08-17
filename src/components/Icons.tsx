@@ -117,6 +117,15 @@ export function IconPhone(props: IconProps) {
   );
 }
 
+export function IconSearch(props: IconProps) {
+  return (
+    <Line {...props}>
+      <circle cx="10.5" cy="10.5" r="6.5" />
+      <path d="m15.5 15.5 4.5 4.5" />
+    </Line>
+  );
+}
+
 export function IconMenu(props: IconProps) {
   return (
     <Line {...props}>
