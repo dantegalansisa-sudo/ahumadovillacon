@@ -52,7 +52,7 @@ mayorista y al structured data.
 | Titular | Franklin Starlin Olaverría Casado |
 | Ubicación | Mercado de Villa Consuelo, Santo Domingo, D.N. |
 | Dominio | https://www.ahumadosvillacon.com (el apex redirige a www) |
-| WhatsApp | (849) 352-9892 |
+| WhatsApp | (829) 929-3606 |
 | Horario | Lun a sáb 7:00 a.m. – 6:30 p.m. · Dom 7:00 a.m. – 5:00 p.m. |
 | Delivery | Sí, coordinado por WhatsApp |
 | Pedido mínimo | No hay |

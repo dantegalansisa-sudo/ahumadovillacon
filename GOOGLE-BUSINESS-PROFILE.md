@@ -25,7 +25,7 @@ Maps: menú → *Tu negocio* → *Agregar tu negocio*.
 | Categorías adicionales | **Distribuidor de alimentos**, **Mayorista de alimentos**, **Tienda de comestibles** |
 | Dirección | Mercado de Villa Consuelo, Santo Domingo, Distrito Nacional |
 | Ubicación en el mapa | Arrastra el pin **al puesto exacto**, no al centro del mercado |
-| Teléfono | `849-352-9892` |
+| Teléfono | `829-929-3606` |
 | Sitio web | La URL de Vercel por ahora; se cambia al dominio cuando lo compren |
 
 > **Nombre:** pon solo `Ahumados Villacon`. Poner "Ahumados Villacon - Embutidos al por
@@ -63,7 +63,7 @@ Copia y pega:
 > pepperoni de las marcas que más se mueven en el país: Induveca, El Cerro, Don Cibao,
 > Prado Campo, Tolentino, Agrofem y más. Trabajamos al por mayor con colmados, cafeterías,
 > restaurantes, hoteles y catering, y al detalle por libra para el hogar. No hay pedido
-> mínimo. Los pedidos se coordinan por WhatsApp al 849-352-9892 y hay entrega disponible.
+> mínimo. Los pedidos se coordinan por WhatsApp al 829-929-3606 y hay entrega disponible.
 
 ## 6. Verificación
 
