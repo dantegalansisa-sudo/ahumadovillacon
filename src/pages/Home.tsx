@@ -17,7 +17,7 @@ import WhatsAppFab from '../components/WhatsAppFab';
 
 const TITLE = 'Embutidos y quesos en Villa Consuelo | Ahumados Villacon';
 const DESCRIPTION =
-  'Salamis, jamones, salchichas, longanizas y quesos en Villa Consuelo, Santo Domingo. Al por mayor y al detalle, sin pedido mínimo, con entrega en la zona. Pide por WhatsApp al 829-929-3606.';
+  'Salamis, jamones, salchichas, longanizas y quesos en Villa Consuelo, Santo Domingo. Al por mayor y al detalle, sin pedido mínimo, con entrega en la zona. Pide por WhatsApp al 829-909-3606.';
 
 export default function Home() {
   return (

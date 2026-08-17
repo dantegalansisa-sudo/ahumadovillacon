@@ -66,15 +66,9 @@ export default function VisitUs() {
                 <IconPhone size={20} />
               </span>
               <span>
-                <strong className="visit__label">Teléfono y WhatsApp</strong>
+                <strong className="visit__label">WhatsApp</strong>
                 <a className="visit__value visit__phone" href={`tel:${BUSINESS.phoneE164}`}>
                   {BUSINESS.whatsappDisplay}
-                </a>
-                <a
-                  className="visit__value visit__phone-alt"
-                  href={`tel:${BUSINESS.landlineE164}`}
-                >
-                  {BUSINESS.landlineDisplay}
                 </a>
               </span>
             </li>

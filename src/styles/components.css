@@ -1097,19 +1097,6 @@
   color: var(--ember);
 }
 
-.visit__phone-alt {
-  margin-top: 2px;
-  font-family: var(--font-display);
-  font-size: 1.125rem;
-  letter-spacing: 0.02em;
-  color: var(--ink-muted);
-  transition: color 0.25s var(--ease-snappy);
-}
-
-.visit__phone-alt:hover {
-  color: var(--ember);
-}
-
 .visit__areas {
   margin-top: 32px;
   padding: 20px 22px;

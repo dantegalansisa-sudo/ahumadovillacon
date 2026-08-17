@@ -18,12 +18,9 @@ const MAP_QUERY = `${ADDRESS}, Santo Domingo 10308, República Dominicana`;
 export const BUSINESS = {
   name: 'Ahumados Villacon',
   shortName: 'Villacon',
-  whatsapp: '18299293606',
-  whatsappDisplay: '(829) 929-3606',
-  phoneE164: '+18299293606',
-  // Landline from the Google listing; the WhatsApp CTAs use the number above.
-  landlineDisplay: '(829) 909-0000',
-  landlineE164: '+18299090000',
+  whatsapp: '18299093606',
+  whatsappDisplay: '(829) 909-3606',
+  phoneE164: '+18299093606',
   /** How the business is listed on Google Maps, which is how people find it. */
   mapsName: 'Embutidos Villa Consuelo',
   address: ADDRESS,

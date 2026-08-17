@@ -28,8 +28,7 @@ export default function Seo({
     name: BUSINESS.name,
     alternateName: ['Ahumados Villa Consuelo', BUSINESS.mapsName],
     description,
-    // Landline first so it matches the number on the Google listing.
-    telephone: [BUSINESS.landlineE164, BUSINESS.phoneE164],
+    telephone: BUSINESS.phoneE164,
     geo: {
       '@type': 'GeoCoordinates',
       latitude: GEO.lat,
