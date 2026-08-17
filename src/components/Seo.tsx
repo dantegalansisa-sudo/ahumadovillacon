@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { BUSINESS, GEO, HOURS, LEGAL, NEARBY_AREAS, isPending } from '../data/business';
+import { BUSINESS, GEO, HOURS, NEARBY_AREAS, isPending } from '../data/business';
 import { absoluteUrl, ogImageUrl } from '../utils/schema';
 
 interface SeoProps {
@@ -42,7 +42,8 @@ export default function Seo({
       name: `${name}, Santo Domingo`,
     })),
     currenciesAccepted: 'DOP',
-    founder: { '@type': 'Person', name: LEGAL.owner },
+    // No `founder`: the holder asked that his name stay off the site, and a
+    // Person in the structured data is exactly what Google would surface.
     openingHoursSpecification: HOURS.map((block) => ({
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: [...block.days],

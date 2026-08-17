@@ -34,20 +34,27 @@ export default function About() {
             Del mercado a tu negocio
           </RevealText>
 
-          {/* Both paragraphs stick to what the ONAPI certificate states and to
-              the audiences in the brief. No founding year, no invented story. */}
+          {/* No founding year, no invented story, and no owner name: the
+              client asked that his own not appear anywhere on the site.
+              "Comercialización", never "elaboración" — the catalog is other
+              people's brands and the site cannot claim to make them. */}
           <p className="lead">
-            Ahumados Villacon es el negocio de {LEGAL.ownerShort} en el Mercado de
-            Villa Consuelo, Santo Domingo. Nos dedicamos a la comercialización de
-            embutidos, jamones, curados y productos ahumados de res, cerdo y aves,
-            trabajando por igual al por mayor y al detalle.
+            Lo nuestro es atender bien. Estamos en el Mercado de Villa Consuelo, en
+            Santo Domingo, con embutidos, jamones, quesos y productos ahumados de
+            res, cerdo y aves: al por mayor para el negocio y al detalle para la
+            casa.
           </p>
 
           <p className="about__text">
-            Atendemos colmados, cafeterías, restaurantes y hogares del Distrito
-            Nacional, sin pedido mínimo y con el pedido coordinado por WhatsApp de
-            principio a fin. Nuestro nombre comercial está registrado en{' '}
-            {LEGAL.registryOffice} bajo el número {LEGAL.registryNumber}.
+            Aquí se compra hablando. Nos dices por WhatsApp lo que necesitas, te
+            confirmamos precio y disponibilidad al momento y coordinamos la entrega.
+            Sin pedido mínimo y sin dar vueltas.
+          </p>
+
+          <p className="about__text">
+            Atendemos colmados, cafeterías, restaurantes y hogares de Villa Consuelo
+            y de los barrios de alrededor. Nuestro nombre comercial está registrado
+            en {LEGAL.registryOffice} bajo el número {LEGAL.registryNumber}.
           </p>
 
           <ul className="about__stats">

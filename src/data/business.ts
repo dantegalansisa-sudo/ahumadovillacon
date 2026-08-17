@@ -69,10 +69,13 @@ export const HOURS_SHORT = 'Lun a sáb 7:00 a.m. – 6:30 p.m. · Dom 7:00 a.m. 
  * Registry data from the ONAPI trade-name certificate (April 2026).
  * "Ahumados Villacon" is both the registered and the public brand name;
  * "Villa Consuelo" is the market the business operates from.
+ *
+ * The holder's name is deliberately absent. He asked that it not appear on the
+ * site, so it is not kept here either — a field nobody renders is still a field
+ * someone can render by accident, and this repository is public. The registry
+ * number below is what identifies the business publicly.
  */
 export const LEGAL = {
-  owner: 'Franklin Starlin Olaverría Casado',
-  ownerShort: 'Franklin Olaverría',
   registryNumber: '924865',
   registryOffice: 'ONAPI',
 } as const;

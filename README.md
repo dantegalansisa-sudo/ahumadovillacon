@@ -82,13 +82,18 @@ mayorista y al structured data.
 | Dato | Valor |
 |---|---|
 | Nombre comercial | Ahumados Villacon (registrado en ONAPI No. 924865) |
-| Titular | Franklin Starlin Olaverría Casado |
 | Ubicación | Mercado de Villa Consuelo, Santo Domingo, D.N. |
 | Dominio | https://www.ahumadosvillacon.com (el apex redirige a www) |
 | WhatsApp | (829) 909-3606 |
 | Horario | Lun a sáb 7:00 a.m. – 6:30 p.m. · Dom 7:00 a.m. – 5:00 p.m. |
 | Delivery | Sí, coordinado por WhatsApp |
 | Pedido mínimo | No hay |
+
+> **El nombre del titular no va en ninguna parte.** El cliente pidió que no se perciba su
+> nombre, así que no aparece en la web, no está en el `Store` de structured data (nada de
+> `founder`) y tampoco se guarda en `business.ts`: un campo que nadie renderiza sigue
+> siendo un campo que alguien puede renderizar por descuido, y este repositorio es público.
+> Lo que identifica al negocio es el número de registro ONAPI.
 
 > La dirección que aparece en el certificado ONAPI es el domicilio legal del titular,
 > **no** el punto de venta. No se publica en el sitio ni se guarda en este repositorio.
